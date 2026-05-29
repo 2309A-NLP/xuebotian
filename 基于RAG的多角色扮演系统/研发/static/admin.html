@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>管理后台</title>
+<style>
+:root{
+  --bg:#f4eee4;
+  --panel:rgba(255,251,246,.82);
+  --panel-strong:rgba(255,253,249,.92);
+  --text:#241d18;
+  --muted:#7a6e62;
+  --line:rgba(120,96,72,.14);
+  --accent:#89502d;
+  --accent-2:#c0824d;
+  --accent-3:#6f8e7b;
+  --good:#2f7d58;
+  --danger:#b5463c;
+  --shadow:0 26px 70px rgba(61,41,22,.12);
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{
+  color:var(--text);
+  font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(208,156,112,.18), transparent 24%),
+    radial-gradient(circle at 85% 15%, rgba(118,157,137,.14), transparent 22%),
+    linear-gradient(135deg,#f8f2ea 0%,#f2eadf 48%,#f7f3ec 100%);
+}
+.page{
+  width:min(1380px,calc(100vw - 32px));
+  margin:16px auto;
+  display:grid;
+  grid-template-columns:300px minmax(0,1fr);
+  gap:18px;
+}
+.side,.panel{
+  background:linear-gradient(180deg,var(--panel-strong),var(--panel));
+  border:1px solid rgba(255,255,255,.6);
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(18px) saturate(120%);
+}
+.side{
+  padding:20px;
+  border-radius:30px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.brand{
+  padding:20px;
+  border-radius:24px;
+  color:#fff8f2;
+  background:linear-gradient(145deg, rgba(98,61,38,.94), rgba(137,92,59,.9) 46%, rgba(96,125,110,.86) 100%);
+}
+.brand h1{margin:0;font-size:28px;letter-spacing:-.05em}
+.brand p{margin:10px 0 0;line-height:1.8;font-size:13px;color:rgba(255,248,242,.86)}
+.user-card,.menu{
+  padding:18px;
+  border-radius:24px;
+  background:rgba(255,255,255,.5);
+  border:1px solid var(--line);
+}
+.user-card strong{display:block;font-size:16px}
+.user-card span{display:block;margin-top:8px;color:var(--muted);font-size:13px;line-height:1.7;word-break:break-all}
+.menu{display:grid;gap:10px}
+.button{
+  border:0;
+  border-radius:18px;
+  padding:13px 16px;
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
+  transition:transform .18s ease, opacity .18s ease, box-shadow .18s ease;
+}
+.button:hover{transform:translateY(-1px)}
+.button:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.button.primary{
+  color:#fff;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  box-shadow:0 16px 30px rgba(137,80,45,.2);
+}
+.button.secondary{
+  color:#fff;
+  background:linear-gradient(135deg,var(--accent-3),#89a898);
+  box-shadow:0 16px 30px rgba(111,142,123,.2);
+}
+.button.ghost{
+  color:var(--text);
+  background:rgba(255,255,255,.78);
+  border:1px solid var(--line);
+}
+.button.warn{
+  color:var(--danger);
+  background:rgba(255,244,241,.9);
+  border:1px solid rgba(181,70,60,.16);
+}
+.main{display:grid;gap:18px}
+.topbar{
+  padding:22px 24px;
+  border-radius:30px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:16px;
+}
+.headline h2{margin:0;font-size:32px;letter-spacing:-.05em}
+.headline p{margin:8px 0 0;color:var(--muted);font-size:14px;line-height:1.8}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.stat{padding:18px;border-radius:24px}
+.stat span{display:block;font-size:12px;color:var(--muted)}
+.stat strong{display:block;margin-top:8px;font-size:28px}
+.grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(420px,.9fr);
+  gap:18px;
+}
+.card{padding:22px;border-radius:30px}
+.card-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:18px;
+}
+.card-head h3{margin:0;font-size:24px;letter-spacing:-.04em}
+.card-head p{margin:8px 0 0;color:var(--muted);font-size:13px;line-height:1.7}
+.table-shell{
+  overflow:auto;
+  border-radius:22px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.5);
+}
+table{width:100%;border-collapse:collapse;min-width:720px}
+th,td{
+  padding:14px 16px;
+  text-align:left;
+  border-bottom:1px solid var(--line);
+  font-size:14px;
+}
+th{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+tr:last-child td{border-bottom:0}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:7px 11px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+}
+.badge.admin{color:#7f451f;background:rgba(205,151,104,.18)}
+.badge.user{color:#496756;background:rgba(111,151,130,.14)}
+.badge.shared{color:#4a5f8b;background:rgba(91,121,181,.12)}
+.badge.private{color:#875a17;background:rgba(201,146,63,.14)}
+.row-actions{display:flex;gap:8px;flex-wrap:wrap}
+.mini{
+  border-radius:14px;
+  padding:9px 12px;
+  font-size:12px;
+  font-weight:700;
+}
+.mini.promote{color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+.mini.demote{color:var(--text);background:#fff;border:1px solid var(--line)}
+.mini.delete{color:var(--danger);background:rgba(255,244,241,.9);border:1px solid rgba(181,70,60,.16)}
+.stack{display:grid;gap:18px}
+.upload-card{
+  padding:18px;
+  border-radius:24px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.56);
+}
+.upload-card h4{margin:0;font-size:18px;letter-spacing:-.03em}
+.upload-card p{margin:8px 0 0;color:var(--muted);font-size:13px;line-height:1.7}
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin-top:16px;
+}
+.full{grid-column:1 / -1}
+.field{display:flex;flex-direction:column;gap:8px}
+.field label{
+  font-size:13px;
+  color:var(--muted);
+  padding-left:4px;
+}
+.input,.native-select{
+  width:100%;
+  padding:14px 16px;
+  border-radius:18px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.84);
+  color:var(--text);
+  font-size:14px;
+}
+.note{color:var(--muted);font-size:13px;line-height:1.8}
+.status{min-height:22px;font-size:14px}
+.status.success{color:var(--good)}
+.status.error{color:var(--danger)}
+.file-list{display:grid;gap:12px}
+.file-item{
+  padding:16px;
+  border-radius:20px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.56);
+}
+.file-item strong{display:block;font-size:14px;word-break:break-all}
+.file-item span{display:block;margin-top:8px;color:var(--muted);font-size:12px;line-height:1.7}
+.file-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.account-cell strong{display:block;font-size:14px}
+.account-cell span{display:block;margin-top:6px;color:var(--muted);font-size:12px;word-break:break-all}
+.select-shell{
+  position:relative;
+  min-width:0;
+}
+.native-select{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  pointer-events:none;
+  padding:0;
+}
+.select-trigger{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 16px;
+  border-radius:18px;
+  border:1px solid var(--line);
+  color:var(--text);
+  background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(247,240,231,.9));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.54);
+  font-size:14px;
+  text-align:left;
+  cursor:pointer;
+  outline:none;
+  transition:.22s ease;
+}
+.select-trigger:hover{border-color:rgba(143,88,53,.24)}
+.select-shell.open .select-trigger,
+.select-trigger:focus,
+.input:focus,
+.dropzone:focus,
+.dropzone:focus-within{
+  border-color:rgba(143,88,53,.34);
+  box-shadow:0 0 0 4px rgba(143,88,53,.08), inset 0 1px 0 rgba(255,255,255,.52);
+}
+.dropzone{
+  position:relative;
+  padding:18px;
+  border-radius:22px;
+  border:1px dashed rgba(137,80,45,.24);
+  background:linear-gradient(180deg, rgba(255,255,255,.88), rgba(247,240,231,.72));
+  transition:.18s ease;
+  cursor:pointer;
+  overflow:hidden;
+}
+.dropzone:hover{
+  border-color:rgba(137,80,45,.42);
+  background:linear-gradient(180deg, rgba(255,255,255,.94), rgba(247,240,231,.8));
+}
+.dropzone.dragging{
+  border-color:rgba(137,80,45,.52);
+  background:linear-gradient(135deg, rgba(137,80,45,.08), rgba(111,142,123,.1));
+  box-shadow:0 0 0 4px rgba(143,88,53,.08);
+}
+.dropzone.has-file{
+  border-style:solid;
+  border-color:rgba(111,142,123,.34);
+}
+.dropzone-copy{
+  display:grid;
+  gap:6px;
+}
+.dropzone-title{
+  font-size:14px;
+  font-weight:700;
+  color:var(--text);
+}
+.dropzone-meta,
+.dropzone-file{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.7;
+}
+.dropzone-file{
+  color:var(--accent);
+  word-break:break-all;
+}
+.file-input{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+.select-shell.open{z-index:120}
+.select-value{
+  min-width:0;
+  flex:1;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.select-trigger::after{
+  content:"";
+  flex:0 0 auto;
+  width:10px;
+  height:10px;
+  border-right:2px solid #9a856f;
+  border-bottom:2px solid #9a856f;
+  transform:translateY(-2px) rotate(45deg);
+  pointer-events:none;
+  transition:transform .18s ease;
+}
+.select-shell.open .select-trigger::after{
+  transform:translateY(2px) rotate(-135deg);
+}
+.select-trigger:disabled{opacity:.62;cursor:not-allowed}
+.select-menu{
+  position:absolute;
+  top:calc(100% + 10px);
+  left:0;
+  right:0;
+  z-index:140;
+  padding:8px;
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.62);
+  background:linear-gradient(180deg, rgba(255,252,248,.98), rgba(255,243,247,.95));
+  box-shadow:0 24px 40px rgba(54,35,20,.14);
+  backdrop-filter:blur(18px) saturate(120%);
+  opacity:0;
+  transform:translateY(8px) scale(.98);
+  pointer-events:none;
+  transition:opacity .18s ease, transform .18s ease;
+  max-height:260px;
+  overflow:auto;
+}
+.select-shell.open .select-menu{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  pointer-events:auto;
+}
+.select-search{
+  position:sticky;
+  top:0;
+  z-index:2;
+  margin-bottom:8px;
+  padding:4px 2px 10px;
+  background:linear-gradient(180deg, rgba(255,251,247,.98), rgba(246,238,229,.92));
+}
+.select-search-input{
+  width:100%;
+  padding:11px 13px;
+  border-radius:14px;
+  border:1px solid rgba(141,84,48,.14);
+  background:rgba(255,255,255,.82);
+  color:var(--text);
+  font-size:13px;
+  outline:none;
+}
+.select-search-input:focus{
+  border-color:rgba(141,84,48,.34);
+  box-shadow:0 0 0 4px rgba(141,84,48,.06);
+}
+.select-options{display:flex;flex-direction:column;gap:2px}
+.select-option{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 14px;
+  border:0;
+  border-radius:16px;
+  background:transparent;
+  color:var(--text);
+  font-size:14px;
+  text-align:left;
+  cursor:pointer;
+  transition:.18s ease;
+}
+.select-option:hover{background:rgba(255,255,255,.72)}
+.select-option.placeholder{color:var(--muted)}
+.select-option.active{
+  background:linear-gradient(135deg, rgba(143,88,53,.1), rgba(111,142,123,.12));
+  box-shadow:inset 0 0 0 1px rgba(143,88,53,.08);
+}
+.select-option.active::after{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:linear-gradient(135deg, var(--accent), var(--accent-3));
+  box-shadow:0 0 0 6px rgba(143,88,53,.08);
+}
+.select-empty{
+  padding:12px 14px;
+  border-radius:16px;
+  color:var(--muted);
+  font-size:13px;
+  text-align:center;
+}
+@media (max-width:1120px){
+  .page{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .page{width:min(100vw - 20px,1380px);margin:10px auto}
+  .stats{grid-template-columns:1fr}
+  .topbar{flex-direction:column;align-items:flex-start}
+  .form-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <aside class="side">
+    <section class="brand">
+      <h1>管理后台</h1>
+      <p>管理用户、角色知识与上传文件。现有角色可以继续扩充知识，新角色也可以在上传时一并创建。</p>
+    </section>
+
+    <section class="user-card">
+      <strong id="adminEmail">-</strong>
+      <span>当前账号具有管理员权限，可以维护用户、知识文件与角色知识空间。</span>
+    </section>
+
+    <section class="menu">
+      <button class="button primary" id="refreshBtn" type="button">刷新数据</button>
+      <button class="button ghost" id="goChatBtn" type="button">进入聊天页</button>
+      <button class="button warn" id="logoutBtn" type="button">退出登录</button>
+    </section>
+  </aside>
+
+  <main class="main">
+    <section class="panel topbar">
+      <div class="headline">
+        <h2>用户与知识管理</h2>
+        <p>上传后会自动清洗文本、去重、分块，并重建向量库。你可以把知识追加到已有角色，也可以先创建新角色再上传知识。</p>
+      </div>
+      <div class="status" id="globalStatus"></div>
+    </section>
+
+    <section class="stats">
+      <article class="panel stat">
+        <span>用户总数</span>
+        <strong id="userCount">0</strong>
+      </article>
+      <article class="panel stat">
+        <span>管理员数量</span>
+        <strong id="adminCount">0</strong>
+      </article>
+      <article class="panel stat">
+        <span>知识文件数</span>
+        <strong id="fileCount">0</strong>
+      </article>
+    </section>
+
+    <section class="grid">
+      <article class="panel card">
+        <div class="card-head">
+          <div>
+            <h3>用户管理</h3>
+            <p>支持查看用户、调整管理员权限，以及删除普通账号。</p>
+          </div>
+        </div>
+        <div class="table-shell">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>账号</th>
+                <th>角色</th>
+                <th>创建时间</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="userTableBody"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="panel card">
+        <div class="card-head">
+          <div>
+            <h3>知识上传</h3>
+            <p>支持 `JSON / TXT / PDF / DOCX`。现有角色用搜索下拉选择，新角色直接输入名称创建。</p>
+          </div>
+        </div>
+
+        <div class="stack">
+          <section class="upload-card">
+            <h4>给现有角色添加数据</h4>
+            <p>适合给已经存在的角色继续补充知识。角色选择器支持搜索，交互和聊天页一致。</p>
+
+            <div class="form-grid">
+              <div class="full field">
+                <label for="existingRoleSelect">选择角色</label>
+                <div class="select-shell">
+                  <select class="native-select" id="existingRoleSelect">
+                    <option value="">请选择角色</option>
+                  </select>
+                  <button class="select-trigger" id="existingRoleSelectTrigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="select-value" id="existingRoleSelectLabel">请选择角色</span>
+                  </button>
+                  <div class="select-menu" id="existingRoleSelectMenu" role="listbox" aria-labelledby="existingRoleSelectTrigger"></div>
+                </div>
+              </div>
+              <div class="field">
+                <label for="existingImportMode">导入方式</label>
+                <div class="select-shell">
+                  <select class="native-select" id="existingImportMode">
+                    <option value="incremental">增量添加</option>
+                    <option value="full">全量替换当前知识空间</option>
+                  </select>
+                  <button class="select-trigger" id="existingImportModeTrigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="select-value" id="existingImportModeLabel">增量添加</span>
+                  </button>
+                  <div class="select-menu" id="existingImportModeMenu" role="listbox" aria-labelledby="existingImportModeTrigger"></div>
+                </div>
+              </div>
+              <div class="full field">
+                <label for="existingFile">选择文件</label>
+                <div class="dropzone" id="existingDropzone" tabindex="0" role="button" aria-label="选择或拖拽上传文件">
+                  <input class="file-input" id="existingFile" type="file" accept=".json,.txt,.pdf,.docx,application/json,text/plain,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                  <div class="dropzone-copy">
+                    <span class="dropzone-title">拖拽文件到这里，或点击选择文件</span>
+                    <span class="dropzone-meta">支持 JSON / TXT / PDF / DOCX</span>
+                    <span class="dropzone-file" id="existingFileName">未选择文件</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="note">当前管理员上传统一按系统默认知识空间处理，不再单独选择知识范围。</div>
+            <div style="margin-top:14px;display:flex;gap:12px;flex-wrap:wrap">
+              <button class="button primary" id="existingUploadBtn" type="button">上传到现有角色</button>
+            </div>
+            <div class="status" id="existingUploadStatus"></div>
+          </section>
+
+          <section class="upload-card">
+            <h4>添加新角色并上传数据</h4>
+            <p>适合系统里还不存在的角色。上传成功后，新角色会自动出现在聊天页和上面的角色列表里。</p>
+
+            <div class="form-grid">
+              <div class="full field">
+                <label for="newRoleName">新角色名称</label>
+                <input class="input" id="newRoleName" type="text" placeholder="例如：诸葛亮">
+              </div>
+              <div class="field">
+                <label for="newImportMode">导入方式</label>
+                <div class="select-shell">
+                  <select class="native-select" id="newImportMode">
+                    <option value="incremental">增量添加</option>
+                    <option value="full">全量替换当前知识空间</option>
+                  </select>
+                  <button class="select-trigger" id="newImportModeTrigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="select-value" id="newImportModeLabel">增量添加</span>
+                  </button>
+                  <div class="select-menu" id="newImportModeMenu" role="listbox" aria-labelledby="newImportModeTrigger"></div>
+                </div>
+              </div>
+              <div class="full field">
+                <label for="newRoleFile">选择文件</label>
+                <div class="dropzone" id="newRoleDropzone" tabindex="0" role="button" aria-label="选择或拖拽上传文件">
+                  <input class="file-input" id="newRoleFile" type="file" accept=".json,.txt,.pdf,.docx,application/json,text/plain,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                  <div class="dropzone-copy">
+                    <span class="dropzone-title">拖拽文件到这里，或点击选择文件</span>
+                    <span class="dropzone-meta">支持 JSON / TXT / PDF / DOCX</span>
+                    <span class="dropzone-file" id="newRoleFileName">未选择文件</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="note">如果这个角色已经存在，请回到上面的“给现有角色添加数据”，避免重复创建相同角色名称。</div>
+            <div style="margin-top:14px;display:flex;gap:12px;flex-wrap:wrap">
+              <button class="button secondary" id="newRoleUploadBtn" type="button">创建角色并上传</button>
+            </div>
+            <div class="status" id="newRoleUploadStatus"></div>
+          </section>
+        </div>
+
+        <div class="card-head" style="margin-top:26px">
+          <div>
+            <h3>已加载文件</h3>
+            <p>展示当前受系统管理的知识文件，包括原文件名、保存名和角色归属。</p>
+          </div>
+        </div>
+        <div class="file-list" id="fileList"></div>
+      </article>
+    </section>
+  </main>
+</div>
+
+<script>
+function resolveApiBase() {
+  const { protocol, hostname, port } = window.location;
+  if (protocol === 'file:') return 'http://127.0.0.1:8000';
+  if (port === '8000') return '';
+  if (hostname === 'localhost' || hostname === '127.0.0.1') return `${protocol}//${hostname}:8000`;
+  return '';
+}
+
+const API_BASE = resolveApiBase();
+const authToken = localStorage.getItem('authToken') || '';
+const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+
+if (!authToken || !currentUser) {
+  window.location.replace('/login');
+}
+
+const $ = id => document.getElementById(id);
+let users = [];
+let files = [];
+let characters = [];
+let profile = null;
+let uploading = false;
+const customSelects = {
+  existingRoleSelect: {
+    trigger: $('existingRoleSelectTrigger'),
+    label: $('existingRoleSelectLabel'),
+    menu: $('existingRoleSelectMenu'),
+    placeholder: '请选择角色',
+    searchable: true,
+    searchPlaceholder: '搜索角色',
+    emptyText: '没有匹配的角色',
+    searchTerm: '',
+    isComposing: false,
+  },
+  existingImportMode: {
+    trigger: $('existingImportModeTrigger'),
+    label: $('existingImportModeLabel'),
+    menu: $('existingImportModeMenu'),
+    placeholder: '请选择导入方式',
+    searchable: false,
+    emptyText: '暂无可选项',
+    searchTerm: '',
+    isComposing: false,
+  },
+  newImportMode: {
+    trigger: $('newImportModeTrigger'),
+    label: $('newImportModeLabel'),
+    menu: $('newImportModeMenu'),
+    placeholder: '请选择导入方式',
+    searchable: false,
+    emptyText: '暂无可选项',
+    searchTerm: '',
+    isComposing: false,
+  },
+};
+
+function setStatus(id, text = '', type = '') {
+  const node = $(id);
+  node.textContent = text;
+  node.className = type ? `status ${type}` : 'status';
+}
+
+function formatDate(value) {
+  if (!value) return '-';
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+  return date.toLocaleString('zh-CN', { hour12: false });
+}
+
+function formatFileSize(size) {
+  const value = Number(size || 0);
+  if (value < 1024) return `${value} B`;
+  if (value < 1024 * 1024) return `${(value / 1024).toFixed(1)} KB`;
+  return `${(value / 1024 / 1024).toFixed(2)} MB`;
+}
+
+function updateCurrentUser(nextUser) {
+  localStorage.setItem('currentUser', JSON.stringify(nextUser));
+}
+
+async function apiRequest(path, options = {}) {
+  let response;
+  try {
+    response = await fetch(API_BASE + path, {
+      ...options,
+      headers: {
+        ...(options.headers || {}),
+        'Authorization': `Bearer ${authToken}`,
+      },
+    });
+  } catch (error) {
+    throw new Error(`无法连接到服务：${API_BASE || window.location.origin}`);
+  }
+
+  const contentType = response.headers.get('content-type') || '';
+  const payload = contentType.includes('application/json')
+    ? await response.json()
+    : { message: `HTTP ${response.status}` };
+
+  if (!response.ok) {
+    throw new Error(payload.detail || payload.message || `HTTP ${response.status}`);
+  }
+  return payload;
+}
+
+function closeAllCustomSelects(exceptId = '') {
+  Object.entries(customSelects).forEach(([selectId, config]) => {
+    if (selectId === exceptId) return;
+    const shell = config.trigger.closest('.select-shell');
+    shell.classList.remove('open');
+    config.trigger.setAttribute('aria-expanded', 'false');
+    if (config.searchable) {
+      config.isComposing = false;
+      if (config.searchTerm) {
+        config.searchTerm = '';
+        syncCustomSelect(selectId);
+      }
+    }
+  });
+}
+
+function getFilteredSelectOptions(selectId) {
+  const select = $(selectId);
+  const config = customSelects[selectId];
+  if (!select || !config) return [];
+
+  const query = (config.searchTerm || '').trim().toLowerCase();
+  return Array.from(select.options).filter(option => {
+    if (!query) return true;
+    if (option.value === '') return false;
+    return option.textContent.toLowerCase().includes(query);
+  });
+}
+
+function syncCustomSelect(selectId) {
+  const select = $(selectId);
+  const config = customSelects[selectId];
+  if (!select || !config) return;
+
+  const selectedOption = select.options[select.selectedIndex];
+  const selectedText = selectedOption ? selectedOption.textContent : config.placeholder;
+  config.label.textContent = selectedText || config.placeholder;
+  config.trigger.disabled = select.disabled;
+  config.menu.innerHTML = '';
+
+  let optionsRoot = config.menu;
+  if (config.searchable) {
+    const searchWrap = document.createElement('div');
+    searchWrap.className = 'select-search';
+
+    const searchInput = document.createElement('input');
+    searchInput.type = 'text';
+    searchInput.className = 'select-search-input';
+    searchInput.placeholder = config.searchPlaceholder || '';
+    searchInput.value = config.searchTerm || '';
+    searchInput.autocomplete = 'off';
+    searchInput.spellcheck = false;
+    searchInput.addEventListener('click', event => event.stopPropagation());
+    searchInput.addEventListener('keydown', event => {
+      event.stopPropagation();
+      if (event.key === 'Escape') closeAllCustomSelects();
+    });
+    searchInput.addEventListener('compositionstart', () => {
+      config.isComposing = true;
+    });
+    searchInput.addEventListener('compositionend', event => {
+      config.isComposing = false;
+      config.searchTerm = event.target.value || '';
+      syncCustomSelect(selectId);
+      const nextInput = config.menu.querySelector('.select-search-input');
+      if (nextInput) nextInput.focus();
+    });
+    searchInput.addEventListener('input', event => {
+      config.searchTerm = event.target.value || '';
+      if (config.isComposing) return;
+      syncCustomSelect(selectId);
+      const nextInput = config.menu.querySelector('.select-search-input');
+      if (nextInput) {
+        nextInput.focus();
+        const nextLength = nextInput.value.length;
+        nextInput.setSelectionRange(nextLength, nextLength);
+      }
+    });
+    searchWrap.appendChild(searchInput);
+    config.menu.appendChild(searchWrap);
+
+    optionsRoot = document.createElement('div');
+    optionsRoot.className = 'select-options';
+    config.menu.appendChild(optionsRoot);
+  }
+
+  const filteredOptions = getFilteredSelectOptions(selectId);
+  filteredOptions.forEach(option => {
+    const item = document.createElement('button');
+    item.type = 'button';
+    item.className = `select-option${option.value === '' ? ' placeholder' : ''}${option.value === select.value ? ' active' : ''}`;
+    item.textContent = option.textContent;
+    item.setAttribute('role', 'option');
+    item.setAttribute('aria-selected', String(option.value === select.value));
+    item.addEventListener('click', event => {
+      event.stopPropagation();
+      if (select.disabled) return;
+      closeAllCustomSelects();
+      if (select.value === option.value) return;
+      select.value = option.value;
+      syncCustomSelect(selectId);
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+    optionsRoot.appendChild(item);
+  });
+
+  if (!filteredOptions.length) {
+    const empty = document.createElement('div');
+    empty.className = 'select-empty';
+    empty.textContent = config.emptyText || '';
+    optionsRoot.appendChild(empty);
+  }
+}
+
+function bindCustomSelect(selectId) {
+  const select = $(selectId);
+  const config = customSelects[selectId];
+  if (!select || !config) return;
+
+  config.trigger.addEventListener('click', event => {
+    event.stopPropagation();
+    if (select.disabled) return;
+    const shell = config.trigger.closest('.select-shell');
+    const isOpen = shell.classList.contains('open');
+    closeAllCustomSelects(isOpen ? '' : selectId);
+    if (!isOpen && config.searchable) {
+      config.searchTerm = '';
+      syncCustomSelect(selectId);
+    }
+    shell.classList.toggle('open', !isOpen);
+    config.trigger.setAttribute('aria-expanded', String(!isOpen));
+    if (!isOpen && config.searchable) {
+      requestAnimationFrame(() => {
+        const searchInput = config.menu.querySelector('.select-search-input');
+        if (searchInput) searchInput.focus();
+      });
+    }
+  });
+
+  config.menu.addEventListener('click', event => {
+    event.stopPropagation();
+  });
+
+  select.addEventListener('change', () => {
+    syncCustomSelect(selectId);
+  });
+
+  syncCustomSelect(selectId);
+}
+
+async function loadProfile() {
+  profile = await apiRequest('/api/me');
+  if (!profile.is_admin) {
+    updateCurrentUser(profile);
+    window.location.replace('/chat');
+    return;
+  }
+  updateCurrentUser(profile);
+  $('adminEmail').textContent = profile.username || profile.email || '-';
+}
+
+async function loadUsers() {
+  users = await apiRequest('/api/admin/users');
+}
+
+async function loadFiles() {
+  files = await apiRequest('/api/admin/data/files');
+}
+
+async function loadCharacters() {
+  characters = await apiRequest('/api/characters');
+}
+
+function renderStats() {
+  $('userCount').textContent = String(users.length);
+  $('adminCount').textContent = String(users.filter(item => item.is_admin).length);
+  $('fileCount').textContent = String(files.length);
+}
+
+function renderUsers() {
+  const body = $('userTableBody');
+  body.innerHTML = '';
+
+  if (!users.length) {
+    body.innerHTML = '<tr><td colspan="5">暂无用户数据</td></tr>';
+    return;
+  }
+
+  users.forEach(user => {
+    const row = document.createElement('tr');
+    const roleBadge = user.is_admin
+      ? '<span class="badge admin">管理员</span>'
+      : '<span class="badge user">普通用户</span>';
+    const roleButton = user.is_admin
+      ? '<button class="button mini demote" data-action="toggle-admin">取消管理员</button>'
+      : '<button class="button mini promote" data-action="toggle-admin">设为管理员</button>';
+
+    row.innerHTML = `
+      <td>${user.id}</td>
+      <td class="account-cell"><strong>${user.username || '-'}</strong><span>${user.email || '-'}</span></td>
+      <td>${roleBadge}</td>
+      <td>${formatDate(user.created_at)}</td>
+      <td>
+        <div class="row-actions">
+          ${roleButton}
+          <button class="button mini delete" data-action="delete-user">删除用户</button>
+        </div>
+      </td>
+    `;
+
+    row.querySelector('[data-action="toggle-admin"]').addEventListener('click', () => {
+      handleToggleAdmin(user);
+    });
+    row.querySelector('[data-action="delete-user"]').addEventListener('click', () => {
+      handleDeleteUser(user);
+    });
+    body.appendChild(row);
+  });
+}
+
+function renderFiles() {
+  const root = $('fileList');
+  root.innerHTML = '';
+
+  if (!files.length) {
+    root.innerHTML = '<div class="file-item"><strong>当前没有已管理的知识文件</strong><span>请先上传知识数据。</span></div>';
+    return;
+  }
+
+  files.forEach(file => {
+    const item = document.createElement('div');
+    item.className = 'file-item';
+    item.innerHTML = `
+      <strong>${file.original_name || file.name}</strong>
+      <span>保存名：${file.saved_name || file.name || '-'}</span>
+      <span>角色：${file.target_role || '未指定'}</span>
+      <span>类型：${file.source_kind || '-'}</span>
+      <span>大小：${formatFileSize(file.size)}</span>
+      <span>更新时间：${formatDate(file.updated_at)}</span>
+    `;
+    root.appendChild(item);
+  });
+}
+
+function renderExistingRoleOptions() {
+  const select = $('existingRoleSelect');
+  const currentValue = select.value;
+  select.innerHTML = '<option value="">请选择角色</option>';
+  characters.forEach(character => {
+    const option = document.createElement('option');
+    option.value = character.name;
+    option.textContent = character.name;
+    select.appendChild(option);
+  });
+  if (currentValue && characters.some(item => item.name === currentValue)) {
+    select.value = currentValue;
+  }
+  syncCustomSelect('existingRoleSelect');
+}
+
+async function refreshAll(message = '') {
+  setStatus('globalStatus', message);
+  await loadProfile();
+  await Promise.all([loadUsers(), loadFiles(), loadCharacters()]);
+  renderUsers();
+  renderFiles();
+  renderExistingRoleOptions();
+  renderStats();
+  if (message) setStatus('globalStatus', message, 'success');
+}
+
+async function handleToggleAdmin(user) {
+  const actionText = user.is_admin ? '取消该用户的管理员权限' : '将该用户设为管理员';
+  if (!window.confirm(`确认${actionText}吗？`)) return;
+
+  try {
+    const payload = await apiRequest(`/api/admin/users/${user.id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ is_admin: !user.is_admin }),
+    });
+
+    if (payload.current_user_changed && payload.user) {
+      updateCurrentUser(payload.user);
+      if (!payload.user.is_admin) {
+        window.location.replace('/chat');
+        return;
+      }
+    }
+
+    await refreshAll(payload.message || '用户权限已更新');
+  } catch (error) {
+    setStatus('globalStatus', error.message || '更新用户权限失败', 'error');
+  }
+}
+
+async function handleDeleteUser(user) {
+  if (!window.confirm(`确认删除用户 ${user.username || user.email} 吗？`)) return;
+
+  try {
+    const payload = await apiRequest(`/api/admin/users/${user.id}`, {
+      method: 'DELETE',
+    });
+    await refreshAll(payload.message || '用户已删除');
+  } catch (error) {
+    setStatus('globalStatus', error.message || '删除用户失败', 'error');
+  }
+}
+
+async function uploadKnowledge({ file, targetRole, knowledgeScope, importMode }) {
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('target_role', targetRole);
+  formData.append('knowledge_scope', knowledgeScope || 'shared');
+  formData.append('import_mode', importMode);
+  return apiRequest('/api/admin/data/upload', {
+    method: 'POST',
+    body: formData,
+  });
+}
+
+function validateFile(file, statusId) {
+  if (!file) {
+    setStatus(statusId, '请先选择一个文件', 'error');
+    return false;
+  }
+
+  const ext = (file.name.split('.').pop() || '').toLowerCase();
+  if (!['json', 'txt', 'pdf', 'docx'].includes(ext)) {
+    setStatus(statusId, '只允许上传 JSON、TXT、PDF、DOCX 文件', 'error');
+    return false;
+  }
+  return true;
+}
+
+function updateDropzoneLabel(inputId, fileNameId) {
+  const input = $(inputId);
+  const label = $(fileNameId);
+  const zone = label ? label.closest('.dropzone') : null;
+  const file = input && input.files && input.files[0];
+  if (!label || !zone) return;
+  label.textContent = file ? file.name : '未选择文件';
+  zone.classList.toggle('has-file', Boolean(file));
+}
+
+function clearSelectedFile(inputId, fileNameId) {
+  const input = $(inputId);
+  if (input) input.value = '';
+  updateDropzoneLabel(inputId, fileNameId);
+}
+
+function assignFileToInput(input, file) {
+  if (!input || !file) return;
+  const transfer = new DataTransfer();
+  transfer.items.add(file);
+  input.files = transfer.files;
+}
+
+function bindDropzone({ dropzoneId, inputId, fileNameId, statusId }) {
+  const dropzone = $(dropzoneId);
+  const input = $(inputId);
+  if (!dropzone || !input) return;
+
+  const openPicker = () => input.click();
+  dropzone.addEventListener('click', event => {
+    if (event.target === input) return;
+    openPicker();
+  });
+  dropzone.addEventListener('keydown', event => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    event.preventDefault();
+    openPicker();
+  });
+
+  input.addEventListener('change', () => {
+    updateDropzoneLabel(inputId, fileNameId);
+  });
+
+  ['dragenter', 'dragover'].forEach(type => {
+    dropzone.addEventListener(type, event => {
+      event.preventDefault();
+      dropzone.classList.add('dragging');
+    });
+  });
+
+  ['dragleave', 'dragend'].forEach(type => {
+    dropzone.addEventListener(type, event => {
+      event.preventDefault();
+      if (event.relatedTarget && dropzone.contains(event.relatedTarget)) return;
+      dropzone.classList.remove('dragging');
+    });
+  });
+
+  dropzone.addEventListener('drop', event => {
+    event.preventDefault();
+    dropzone.classList.remove('dragging');
+    const file = event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files[0];
+    if (!file) return;
+    assignFileToInput(input, file);
+    updateDropzoneLabel(inputId, fileNameId);
+    if (statusId) setStatus(statusId);
+  });
+
+  updateDropzoneLabel(inputId, fileNameId);
+}
+
+async function handleExistingRoleUpload() {
+  const targetRole = $('existingRoleSelect').value;
+  const file = $('existingFile').files && $('existingFile').files[0];
+  const knowledgeScope = 'shared';
+  const importMode = $('existingImportMode').value;
+
+  if (!targetRole) {
+    setStatus('existingUploadStatus', '请先选择一个现有角色', 'error');
+    return;
+  }
+  if (!validateFile(file, 'existingUploadStatus')) return;
+  if (uploading) return;
+
+  uploading = true;
+  $('existingUploadBtn').disabled = true;
+  setStatus('existingUploadStatus', '正在上传并重建知识库...');
+
+  try {
+    const payload = await uploadKnowledge({
+      file,
+      targetRole,
+      knowledgeScope,
+      importMode,
+    });
+    clearSelectedFile('existingFile', 'existingFileName');
+    await refreshAll(payload.message || '数据文件上传成功');
+    setStatus(
+      'existingUploadStatus',
+      `上传成功：${payload.original_name} -> ${payload.saved_name}，角色 ${payload.target_role} 当前知识库共 ${payload.document_count} 条文档。`,
+      'success',
+    );
+  } catch (error) {
+    setStatus('existingUploadStatus', error.message || '上传失败', 'error');
+  } finally {
+    uploading = false;
+    $('existingUploadBtn').disabled = false;
+  }
+}
+
+async function handleNewRoleUpload() {
+  const targetRole = $('newRoleName').value.trim();
+  const file = $('newRoleFile').files && $('newRoleFile').files[0];
+  const knowledgeScope = 'shared';
+  const importMode = $('newImportMode').value;
+
+  if (!targetRole) {
+    setStatus('newRoleUploadStatus', '请先输入新角色名称', 'error');
+    return;
+  }
+  if (characters.some(item => item.name === targetRole)) {
+    setStatus('newRoleUploadStatus', '该角色已存在，请使用“给现有角色添加数据”', 'error');
+    return;
+  }
+  if (!validateFile(file, 'newRoleUploadStatus')) return;
+  if (uploading) return;
+
+  uploading = true;
+  $('newRoleUploadBtn').disabled = true;
+  setStatus('newRoleUploadStatus', '正在创建角色并上传知识...');
+
+  try {
+    const payload = await uploadKnowledge({
+      file,
+      targetRole,
+      knowledgeScope,
+      importMode,
+    });
+    $('newRoleName').value = '';
+    clearSelectedFile('newRoleFile', 'newRoleFileName');
+    await refreshAll(payload.message || '角色创建并上传成功');
+    setStatus(
+      'newRoleUploadStatus',
+      `创建成功：${payload.target_role}，文件 ${payload.original_name} 已导入，当前知识库共 ${payload.document_count} 条文档。`,
+      'success',
+    );
+  } catch (error) {
+    setStatus('newRoleUploadStatus', error.message || '创建并上传失败', 'error');
+  } finally {
+    uploading = false;
+    $('newRoleUploadBtn').disabled = false;
+  }
+}
+
+$('refreshBtn').addEventListener('click', async () => {
+  try {
+    await refreshAll('数据已刷新');
+  } catch (error) {
+    setStatus('globalStatus', error.message || '刷新失败', 'error');
+  }
+});
+
+$('existingUploadBtn').addEventListener('click', handleExistingRoleUpload);
+$('newRoleUploadBtn').addEventListener('click', handleNewRoleUpload);
+$('goChatBtn').addEventListener('click', () => window.location.replace('/chat'));
+$('logoutBtn').addEventListener('click', () => {
+  localStorage.removeItem('authToken');
+  localStorage.removeItem('currentUser');
+  window.location.replace('/login');
+});
+
+document.addEventListener('click', () => {
+  closeAllCustomSelects();
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') closeAllCustomSelects();
+});
+
+Object.keys(customSelects).forEach(bindCustomSelect);
+bindDropzone({
+  dropzoneId: 'existingDropzone',
+  inputId: 'existingFile',
+  fileNameId: 'existingFileName',
+  statusId: 'existingUploadStatus',
+});
+bindDropzone({
+  dropzoneId: 'newRoleDropzone',
+  inputId: 'newRoleFile',
+  fileNameId: 'newRoleFileName',
+  statusId: 'newRoleUploadStatus',
+});
+
+(async function bootstrap() {
+  try {
+    await refreshAll();
+  } catch (error) {
+    setStatus('globalStatus', error.message || '管理页数据加载失败', 'error');
+  }
+})();
+</script>
+</body>
+</html>
