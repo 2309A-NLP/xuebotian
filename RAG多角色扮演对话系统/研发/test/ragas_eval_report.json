@@ -1,0 +1,41 @@
+{
+  "faithfulness": 0.880952380952381,
+  "answer_relevancy": 0.7960446679004936,
+  "context_precision": 0.9999999999666667,
+  "context_recall": 0.9,
+  "answer_correctness": 1.0,
+  "score_rows": 10,
+  "metric_failures": {
+    "faithfulness": {
+      "valid_samples": 10,
+      "failed_samples": 0
+    },
+    "answer_relevancy": {
+      "valid_samples": 10,
+      "failed_samples": 0
+    },
+    "context_precision": {
+      "valid_samples": 10,
+      "failed_samples": 0
+    },
+    "context_recall": {
+      "valid_samples": 10,
+      "failed_samples": 0
+    },
+    "answer_correctness": {
+      "valid_samples": 10,
+      "failed_samples": 0
+    }
+  },
+  "trace_count": 10,
+  "metrics": [
+    "faithfulness",
+    "answer_relevancy",
+    "context_precision",
+    "context_recall",
+    "answer_correctness"
+  ],
+  "sample_count": 10,
+  "input_path": "G:\\eight_dim\\课堂笔记\\专高六\\RAG多角色扮演\\test\\ragas_eval_samples.jsonl",
+  "llm_mode": "online"
+}

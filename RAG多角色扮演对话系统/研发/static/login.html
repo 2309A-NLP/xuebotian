@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Role Chat · 登录</title>
+<style>
+:root{
+  --pointer-x:50%;
+  --pointer-y:50%;
+  --cursor-x:-160px;
+  --cursor-y:-160px;
+  --trail-x:-220px;
+  --trail-y:-220px;
+  --text:#201914;
+  --muted:#706255;
+  --line:rgba(112,88,65,.16);
+  --panel:rgba(255,250,244,.7);
+  --panel-strong:rgba(255,252,248,.88);
+  --panel-soft:rgba(255,255,255,.44);
+  --accent:#8f5835;
+  --accent-2:#c88a56;
+  --accent-3:#6f8e7b;
+  --danger:#be4f45;
+  --success:#2f7b5b;
+  --shadow:0 36px 96px rgba(54,35,20,.14);
+  --font-ui:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  --font-display:"Georgia","Times New Roman","Songti SC","STSong",serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{
+  position:relative;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  min-height:100vh;
+  padding:28px;
+  overflow:auto;
+  color:var(--text);
+  font-family:var(--font-ui);
+  background:
+    radial-gradient(circle at 12% 14%, rgba(224,171,131,.18), transparent 22%),
+    radial-gradient(circle at 84% 16%, rgba(128,159,143,.14), transparent 22%),
+    radial-gradient(circle at 72% 82%, rgba(243,214,174,.18), transparent 24%),
+    linear-gradient(140deg,#f8f3ed 0%,#f1e7db 44%,#f8f4ef 100%);
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle 240px at var(--pointer-x) var(--pointer-y), rgba(255,255,255,.36), transparent 72%),
+    radial-gradient(circle 520px at var(--pointer-x) var(--pointer-y), rgba(206,181,157,.12), transparent 72%);
+  transition:background .16s ease-out;
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:-20%;
+  pointer-events:none;
+  opacity:.3;
+  background-image:
+    linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+  background-size:120px 120px;
+  mask-image:radial-gradient(circle at center, black 36%, transparent 86%);
+}
+.pointer-layers,
+.ambient,
+.grain{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+}
+.pointer-layers{
+  z-index:0;
+}
+.cursor-glow,
+.cursor-trail{
+  position:absolute;
+  left:0;
+  top:0;
+  border-radius:999px;
+  transform:translate3d(0,0,0);
+  will-change:transform, opacity;
+}
+.cursor-glow{
+  width:240px;
+  height:240px;
+  margin:-120px 0 0 -120px;
+  opacity:.52;
+  background:
+    radial-gradient(circle at 36% 36%, rgba(255,255,255,.9) 0%, rgba(255,255,255,.38) 20%, rgba(255,255,255,.08) 48%, rgba(255,255,255,0) 74%);
+  filter:blur(12px);
+  mix-blend-mode:screen;
+}
+.cursor-trail{
+  width:420px;
+  height:160px;
+  margin:-80px 0 0 -210px;
+  opacity:.42;
+  background:
+    radial-gradient(circle at 24% 50%, rgba(245,223,202,.58) 0%, rgba(245,223,202,.16) 24%, rgba(245,223,202,0) 64%),
+    linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.3) 26%, rgba(185,216,199,.16) 54%, rgba(255,255,255,0) 88%);
+  filter:blur(20px);
+  mask-image:linear-gradient(90deg, transparent, black 18%, black 74%, transparent);
+}
+.ambient{
+  overflow:hidden;
+}
+.ambient span{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(12px);
+  opacity:.56;
+  animation:drift 18s ease-in-out infinite;
+}
+.ambient span:nth-child(1){
+  width:240px;
+  height:240px;
+  left:8%;
+  top:10%;
+  background:radial-gradient(circle, rgba(255,255,255,.8), rgba(255,255,255,0));
+}
+.ambient span:nth-child(2){
+  width:320px;
+  height:320px;
+  right:6%;
+  top:12%;
+  background:radial-gradient(circle, rgba(205,225,216,.62), rgba(205,225,216,0));
+  animation-delay:-7s;
+}
+.ambient span:nth-child(3){
+  width:280px;
+  height:280px;
+  left:44%;
+  bottom:2%;
+  background:radial-gradient(circle, rgba(240,216,190,.72), rgba(240,216,190,0));
+  animation-delay:-11s;
+}
+.grain{
+  opacity:.08;
+  mix-blend-mode:multiply;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(66,42,24,.4) .6px, transparent .8px),
+    radial-gradient(circle at 80% 40%, rgba(66,42,24,.24) .6px, transparent .8px),
+    radial-gradient(circle at 30% 70%, rgba(66,42,24,.24) .5px, transparent .8px);
+  background-size:120px 120px, 160px 160px, 140px 140px;
+}
+.shell{
+  position:relative;
+  z-index:1;
+  width:min(1180px,100%);
+  min-height:min(760px,calc(100vh - 56px));
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  border-radius:36px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.58);
+  background:linear-gradient(180deg, rgba(255,255,255,.3), rgba(255,255,255,.12));
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(24px) saturate(130%);
+}
+.shell::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,0)),
+    radial-gradient(circle at 20% 18%, rgba(255,255,255,.16), transparent 22%);
+}
+.hero{
+  position:relative;
+  padding:58px 54px 52px;
+  color:#fff8f2;
+  background:
+    radial-gradient(circle at 16% 18%, rgba(255,255,255,.18), transparent 24%),
+    radial-gradient(circle at 82% 16%, rgba(255,230,205,.12), transparent 20%),
+    linear-gradient(155deg, rgba(86,54,34,.96) 0%, rgba(136,91,59,.92) 46%, rgba(86,111,99,.9) 100%);
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,0)),
+    radial-gradient(circle at 68% 72%, rgba(255,255,255,.12), transparent 22%);
+  mix-blend-mode:screen;
+}
+.hero-inner{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:100%;
+}
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  width:max-content;
+  padding:10px 16px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.08);
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.eyebrow::before{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#f5d6b3,#fff);
+  box-shadow:0 0 0 8px rgba(255,255,255,.08);
+}
+.hero-copy h1{
+  margin:26px 0 18px;
+  font-family:var(--font-display);
+  font-size:60px;
+  line-height:1.02;
+  letter-spacing:-.05em;
+  font-weight:600;
+}
+.hero-copy p{
+  max-width:520px;
+  margin:0;
+  font-size:17px;
+  line-height:1.95;
+  color:rgba(255,248,242,.86);
+}
+.hero-band{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  margin-top:34px;
+}
+.hero-stat{
+  padding:16px 16px 14px;
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(10px);
+}
+.hero-stat strong{
+  display:block;
+  font-size:24px;
+  font-family:var(--font-display);
+}
+.hero-stat span{
+  display:block;
+  margin-top:8px;
+  font-size:12px;
+  line-height:1.7;
+  color:rgba(255,248,242,.82);
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+  margin-top:24px;
+}
+.feature{
+  min-height:120px;
+  padding:18px;
+  border-radius:24px;
+  border:1px solid rgba(255,255,255,.12);
+  background:linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.06));
+  backdrop-filter:blur(12px);
+}
+.feature strong{
+  display:block;
+  margin-bottom:10px;
+  font-size:15px;
+}
+.feature span{
+  display:block;
+  font-size:13px;
+  line-height:1.8;
+  color:rgba(255,248,242,.82);
+}
+.panel{
+  position:relative;
+  padding:42px 38px;
+  background:
+    linear-gradient(180deg, rgba(255,252,248,.94), rgba(248,243,236,.88)),
+    radial-gradient(circle at 100% 0%, rgba(200,138,86,.08), transparent 22%);
+}
+.panel::before{
+  content:"";
+  position:absolute;
+  inset:18px;
+  border-radius:28px;
+  border:1px solid rgba(255,255,255,.54);
+  pointer-events:none;
+}
+.panel-body{
+  position:relative;
+  z-index:1;
+  max-width:404px;
+  margin:0 auto;
+  padding-bottom:8px;
+}
+.topline{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom:18px;
+}
+.topline span{
+  font-size:12px;
+  color:var(--muted);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.status-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.68);
+  border:1px solid rgba(112,88,65,.1);
+  color:#735f4f;
+  font-size:12px;
+}
+.status-chip::before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent-3));
+}
+.panel h2{
+  margin:0;
+  font-family:var(--font-display);
+  font-size:36px;
+  line-height:1.1;
+  letter-spacing:-.04em;
+  font-weight:600;
+}
+.panel p{
+  margin:12px 0 0;
+  color:var(--muted);
+  line-height:1.82;
+  font-size:14px;
+}
+.tabs{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4px;
+  padding:5px;
+  margin:18px 0 24px;
+  border-radius:999px;
+  background:rgba(223,211,197,.7);
+  border:1px solid rgba(255,255,255,.78);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.44);
+}
+.tab{
+  border:0;
+  padding:12px 0;
+  border-radius:999px;
+  background:transparent;
+  color:var(--muted);
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.22s ease;
+}
+.tab.active{
+  color:var(--text);
+  background:rgba(255,255,255,.88);
+  box-shadow:0 10px 24px rgba(63,43,27,.08);
+}
+.form{display:none}
+.form.active{display:block}
+.group{margin-bottom:14px}
+.duo{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.label{
+  display:block;
+  margin-bottom:10px;
+  font-size:14px;
+  font-weight:700;
+}
+.input{
+  width:100%;
+  padding:15px 16px;
+  border-radius:18px;
+  border:1px solid var(--line);
+  background:var(--panel-strong);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.58);
+  outline:none;
+  color:var(--text);
+  font-size:15px;
+  transition:border-color .18s ease, box-shadow .18s ease, transform .18s ease, background .18s ease;
+}
+.input::placeholder{color:#9b8d7d}
+.input:focus{
+  border-color:rgba(143,88,53,.42);
+  background:#fffdfa;
+  transform:translateY(-1px);
+  box-shadow:0 0 0 4px rgba(143,88,53,.08), inset 0 1px 0 rgba(255,255,255,.58);
+}
+.error{
+  min-height:18px;
+  margin-top:8px;
+  color:var(--danger);
+  font-size:12px;
+}
+.submit{
+  width:100%;
+  margin-top:4px;
+  padding:15px 18px;
+  border:0;
+  border-radius:18px;
+  color:#fff;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:700;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  box-shadow:0 18px 34px rgba(143,88,53,.2);
+  transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+}
+.submit:hover{
+  transform:translateY(-1px);
+  box-shadow:0 22px 40px rgba(143,88,53,.24);
+}
+.submit:disabled{
+  opacity:.62;
+  cursor:not-allowed;
+  transform:none;
+  box-shadow:none;
+}
+.message{
+  min-height:22px;
+  margin-top:14px;
+  text-align:center;
+  font-size:14px;
+}
+.message.error{color:var(--danger)}
+.message.success{color:var(--success)}
+.form-foot{
+  margin-top:16px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.75;
+  text-align:center;
+}
+@keyframes drift{
+  0%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(18px,-12px,0) scale(1.06)}
+  100%{transform:translate3d(-12px,18px,0) scale(.96)}
+}
+@media (max-width:1040px){
+  body{padding:18px}
+  .shell{
+    min-height:auto;
+    grid-template-columns:1fr;
+  }
+  .hero,.panel{padding:34px 26px}
+  .hero-copy h1{font-size:44px}
+}
+@media (max-width:640px){
+  body{padding:12px}
+  .hero-band,.hero-grid,.duo{grid-template-columns:1fr}
+  .topline{flex-direction:column;align-items:flex-start}
+  .shell{border-radius:28px}
+  .hero,.panel{padding:26px 18px}
+  .panel::before{inset:12px}
+}
+</style>
+</head>
+<body>
+<div class="pointer-layers" aria-hidden="true">
+  <div class="cursor-trail" id="cursorTrail"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+</div>
+<div class="ambient" aria-hidden="true">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="shell">
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow">Role Chat</div>
+        <div class="hero-copy">
+          <h1>进入你的角色对话空间。</h1>
+          <p>用更自然的方式管理身份、切换角色与延续上下文。现在开始，账号拥有更明确的用户名体系，页面也会随着你的鼠标滑动泛起细微涟漪。</p>
+        </div>
+
+        <div class="hero-band">
+          <div class="hero-stat">
+            <strong>Identity</strong>
+            <span>用户名、邮箱双通道识别，身份更清晰。</span>
+          </div>
+          <div class="hero-stat">
+            <strong>Context</strong>
+            <span>角色与会话状态延续，切换更自然。</span>
+          </div>
+          <div class="hero-stat">
+            <strong>Texture</strong>
+            <span>玻璃、暖石与流动光感构成更高级的界面层次。</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-grid">
+        <div class="feature">
+          <strong>用户名体系</strong>
+          <span>注册时填写用户名，聊天页与会话身份统一显示，辨识度更高。</span>
+        </div>
+        <div class="feature">
+          <strong>双入口登录</strong>
+          <span>登录时既可输入邮箱，也可直接输入用户名，减少记忆负担。</span>
+        </div>
+        <div class="feature">
+          <strong>动态涟漪</strong>
+          <span>鼠标滑过页面时，背景会以低干扰方式扩散柔和波纹，保留克制感。</span>
+        </div>
+        <div class="feature">
+          <strong>高级质感</strong>
+          <span>保持现有暖色调与玻璃面板，同时增加排版、光影与信息层次。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-body">
+      <div class="topline">
+        <span>Account Access</span>
+        <div class="status-chip">身份已升级</div>
+      </div>
+      <h2>欢迎回来，也欢迎第一次进入。</h2>
+      <p>登录延续你的会话，或注册一个新的身份开始聊天。</p>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="login" type="button">登录</button>
+        <button class="tab" data-tab="register" type="button">注册</button>
+      </div>
+
+      <form id="loginForm" class="form active">
+        <div class="group">
+          <label class="label" for="loginAccount">用户名或邮箱</label>
+          <input class="input" id="loginAccount" type="text" autocomplete="username" placeholder="请输入用户名或邮箱">
+          <div class="error" id="loginAccountError"></div>
+        </div>
+        <div class="group">
+          <label class="label" for="loginPassword">密码</label>
+          <input class="input" id="loginPassword" type="password" autocomplete="current-password" placeholder="请输入密码">
+          <div class="error" id="loginPasswordError"></div>
+        </div>
+        <button class="submit" id="loginBtn" type="submit">登录并进入聊天</button>
+        <div class="message" id="loginMessage"></div>
+        <div class="form-foot">登录后将直接进入聊天页。</div>
+      </form>
+
+      <form id="registerForm" class="form">
+        <div class="duo">
+          <div class="group">
+            <label class="label" for="registerUsername">用户名</label>
+            <input class="input" id="registerUsername" type="text" autocomplete="username" placeholder="例如：林深见鹿">
+            <div class="error" id="registerUsernameError"></div>
+          </div>
+          <div class="group">
+            <label class="label" for="registerEmail">邮箱</label>
+            <input class="input" id="registerEmail" type="email" autocomplete="email" placeholder="请输入邮箱">
+            <div class="error" id="registerEmailError"></div>
+          </div>
+        </div>
+        <div class="group">
+          <label class="label" for="registerPassword">密码</label>
+          <input class="input" id="registerPassword" type="password" autocomplete="new-password" placeholder="请输入密码">
+          <div class="error" id="registerPasswordError"></div>
+        </div>
+        <div class="group">
+          <label class="label" for="registerConfirmPassword">确认密码</label>
+          <input class="input" id="registerConfirmPassword" type="password" autocomplete="new-password" placeholder="请再次输入密码">
+          <div class="error" id="registerConfirmError"></div>
+        </div>
+        <button class="submit" id="registerBtn" type="submit">创建账号</button>
+        <div class="message" id="registerMessage"></div>
+      </form>
+    </div>
+  </section>
+</div>
+
+<script>
+function resolveApiBase() {
+  const { protocol, hostname, port } = window.location;
+  if (protocol === 'file:') return 'http://127.0.0.1:8000';
+  if (port === '8000') return '';
+  if (hostname === 'localhost' || hostname === '127.0.0.1') return `${protocol}//${hostname}:8000`;
+  return '';
+}
+
+const API_BASE = resolveApiBase();
+const $ = id => document.getElementById(id);
+const tabs = document.querySelectorAll('.tab');
+const forms = { login: $('loginForm'), register: $('registerForm') };
+const cursorGlow = $('cursorGlow');
+const cursorTrail = $('cursorTrail');
+const usernamePattern = /^[A-Za-z0-9_\-\u4e00-\u9fff]{2,24}$/;
+
+function setTab(target) {
+  tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.tab === target));
+  Object.entries(forms).forEach(([key, form]) => form.classList.toggle('active', key === target));
+  clearMessages();
+}
+
+function clearMessages() {
+  ['loginMessage', 'registerMessage'].forEach(id => {
+    $(id).textContent = '';
+    $(id).className = 'message';
+  });
+  document.querySelectorAll('.error').forEach(node => { node.textContent = ''; });
+}
+
+function setMessage(id, text, type) {
+  const node = $(id);
+  node.textContent = text;
+  node.className = `message ${type}`;
+}
+
+function setError(id, text) {
+  $(id).textContent = text;
+}
+
+function normalizeAuthMessage(message = '') {
+  if (!message) return '';
+  if (message.includes('用户名需为') || message.includes('该用户名已被占用')) return '请输入可用的用户名';
+  if (message.includes('密码长度') || message.includes('密码必须包含')) return '请输入有效的密码';
+  return message;
+}
+
+function updatePointerEffect(x, y) {
+  document.documentElement.style.setProperty('--pointer-x', `${x}px`);
+  document.documentElement.style.setProperty('--pointer-y', `${y}px`);
+}
+
+async function apiCall(path, body) {
+  let response;
+  try {
+    response = await fetch(API_BASE + path, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+  } catch (error) {
+    throw new Error(`无法连接到服务 ${API_BASE || window.location.origin}`);
+  }
+
+  const contentType = response.headers.get('content-type') || '';
+  const payload = contentType.includes('application/json')
+    ? await response.json()
+    : { success: false, message: `HTTP ${response.status}` };
+
+  if (!response.ok) {
+    throw new Error(payload.detail || payload.message || `HTTP ${response.status}`);
+  }
+
+  return payload;
+}
+
+tabs.forEach(tab => tab.addEventListener('click', () => setTab(tab.dataset.tab)));
+
+function resolvePostLoginPath(user) {
+  return '/chat';
+}
+
+if (localStorage.getItem('authToken') && localStorage.getItem('currentUser')) {
+  try {
+    const savedUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+    window.location.replace(resolvePostLoginPath(savedUser));
+  } catch (error) {
+    window.location.replace('/chat');
+  }
+}
+
+$('loginForm').addEventListener('submit', async event => {
+  event.preventDefault();
+  clearMessages();
+  const account = $('loginAccount').value.trim();
+  const password = $('loginPassword').value;
+  let valid = true;
+
+  if (!account) { setError('loginAccountError', '请输入用户名或邮箱'); valid = false; }
+  if (!password) { setError('loginPasswordError', '请输入密码'); valid = false; }
+  if (!valid) return;
+
+  $('loginBtn').disabled = true;
+  try {
+    const result = await apiCall('/api/login', { account, password });
+    if (!result.success) {
+      setMessage('loginMessage', result.message, 'error');
+      return;
+    }
+    localStorage.setItem('authToken', result.token);
+    localStorage.setItem('currentUser', JSON.stringify(result.user));
+    window.location.replace(resolvePostLoginPath(result.user));
+  } catch (error) {
+    setMessage('loginMessage', error.message || '登录失败，请稍后重试', 'error');
+  } finally {
+    $('loginBtn').disabled = false;
+  }
+});
+
+$('registerForm').addEventListener('submit', async event => {
+  event.preventDefault();
+  clearMessages();
+  const username = $('registerUsername').value.trim();
+  const email = $('registerEmail').value.trim();
+  const password = $('registerPassword').value;
+  const confirmPassword = $('registerConfirmPassword').value;
+  let valid = true;
+
+  if (!username) {
+    setError('registerUsernameError', '请输入用户名');
+    valid = false;
+  } else if (!usernamePattern.test(username)) {
+    setError('registerUsernameError', '请输入有效的用户名');
+    valid = false;
+  }
+
+  if (!email) { setError('registerEmailError', '请输入邮箱'); valid = false; }
+  if (!password) { setError('registerPasswordError', '请输入密码'); valid = false; }
+  if (!confirmPassword) { setError('registerConfirmError', '请确认密码'); valid = false; }
+  if (!valid) return;
+
+  $('registerBtn').disabled = true;
+  try {
+    const result = await apiCall('/api/register', {
+      username,
+      email,
+      password,
+      confirm_password: confirmPassword,
+    });
+    if (!result.success) {
+      setMessage('registerMessage', normalizeAuthMessage(result.message), 'error');
+      return;
+    }
+    $('loginAccount').value = username;
+    setMessage('registerMessage', result.message, 'success');
+    setTimeout(() => setTab('login'), 900);
+  } catch (error) {
+    setMessage('registerMessage', error.message || '注册失败，请稍后重试', 'error');
+  } finally {
+    $('registerBtn').disabled = false;
+  }
+});
+
+const pointerState = {
+  targetX: window.innerWidth * 0.5,
+  targetY: window.innerHeight * 0.36,
+  glowX: window.innerWidth * 0.5,
+  glowY: window.innerHeight * 0.36,
+  trailX: window.innerWidth * 0.5,
+  trailY: window.innerHeight * 0.36,
+};
+
+function renderCursorLayers() {
+  pointerState.glowX += (pointerState.targetX - pointerState.glowX) * 0.18;
+  pointerState.glowY += (pointerState.targetY - pointerState.glowY) * 0.18;
+  pointerState.trailX += (pointerState.targetX - pointerState.trailX) * 0.08;
+  pointerState.trailY += (pointerState.targetY - pointerState.trailY) * 0.08;
+
+  cursorGlow.style.transform = `translate3d(${pointerState.glowX}px, ${pointerState.glowY}px, 0)`;
+  cursorTrail.style.transform = `translate3d(${pointerState.trailX}px, ${pointerState.trailY}px, 0) rotate(-8deg)`;
+  requestAnimationFrame(renderCursorLayers);
+}
+
+document.addEventListener('pointermove', event => {
+  pointerState.targetX = event.clientX;
+  pointerState.targetY = event.clientY;
+  updatePointerEffect(event.clientX, event.clientY);
+});
+
+document.addEventListener('pointerdown', event => {
+  pointerState.targetX = event.clientX;
+  pointerState.targetY = event.clientY;
+  updatePointerEffect(event.clientX, event.clientY);
+  cursorGlow.style.opacity = '.72';
+  cursorTrail.style.opacity = '.56';
+  window.clearTimeout(window.__cursorPulseTimer);
+  window.__cursorPulseTimer = window.setTimeout(() => {
+    cursorGlow.style.opacity = '.52';
+    cursorTrail.style.opacity = '.42';
+  }, 180);
+});
+
+renderCursorLayers();
+</script>
+</body>
+</html>
