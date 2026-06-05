@@ -40,13 +40,13 @@ ONLINE_LLM_BASE_URL = os.getenv(
     "ONLINE_LLM_BASE_URL", "https://api.siliconflow.cn/v1/chat/completions"
 )
 ONLINE_LLM_API_KEY = os.getenv(
-    "ONLINE_LLM_API_KEY", "sk-nykszkfahiqcdahumeyznopzopgywlqqpuubjrzdsjndqjnk"
+    "ONLINE_LLM_API_KEY", ""
 )
 ONLINE_LLM_MODEL = os.getenv("ONLINE_LLM_MODEL", "Pro/deepseek-ai/DeepSeek-V3")
 ONLINE_LLM_TIMEOUT = int(os.getenv("ONLINE_LLM_TIMEOUT", "120"))
 
 MINERU_API_BASE_URL = os.getenv("MINERU_API_BASE_URL", "https://mineru.net")
-MINERU_API_TOKEN = os.getenv("MINERU_API_TOKEN", "eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJqdGkiOiIxOTIwMDA0MiIsInJvbCI6IlJPTEVfUkVHSVNURVIiLCJpc3MiOiJPcGVuWExhYiIsImlhdCI6MTc3ODcyNzQ5NiwiY2xpZW50SWQiOiJsa3pkeDU3bnZ5MjJqa3BxOXgydyIsInBob25lIjoiMTM3MjIyNzczNDciLCJvcGVuSWQiOm51bGwsInV1aWQiOiI5ZjNiZGU0NC04MDM3LTQ2NjMtYTZjMS0zNDQzNjlkZDA2ZTkiLCJlbWFpbCI6IiIsImV4cCI6MTc4NjUwMzQ5Nn0.ia4_Z96QElGO_vDzmU8wr6UZjpLRa6coqybbGH4AcJXjcK6Xs1jEuTLOkfcMh1LH6j0kW9MX3S3Zf7iwl5rNWQ")
+MINERU_API_TOKEN = os.getenv("MINERU_API_TOKEN", "")
 MINERU_API_USER_TOKEN = os.getenv("MINERU_API_USER_TOKEN", "")
 MINERU_PDF_MODEL_VERSION = os.getenv("MINERU_PDF_MODEL_VERSION", "vlm")
 MINERU_PDF_LANGUAGE = os.getenv("MINERU_PDF_LANGUAGE", "auto")

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RAG 问答系统</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <p class="brand-kicker">Local BGE-m3 + Milvus</p>
+          <h1>RAG 问答系统</h1>
+          <p class="brand-copy">上传 PDF、管理文档、检索问答、支持语音输入。</p>
+        </div>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>上传文档</h2>
+            <span id="upload-status" class="status-tag">待上传</span>
+          </div>
+          <form id="upload-form" class="upload-form">
+            <label class="upload-box" for="pdf-file">
+              <input id="pdf-file" type="file" accept=".pdf" required />
+              <span>选择 PDF 文件</span>
+            </label>
+            <button type="submit" class="primary-btn">上传并解析</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>文档列表</h2>
+            <button id="refresh-docs" class="ghost-btn">刷新</button>
+          </div>
+          <div id="document-list" class="document-list"></div>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <section class="hero-card">
+          <div>
+            <p class="hero-kicker">Answer grounded in documents</p>
+            <h2>检索增强问答</h2>
+            <p>支持核心意图识别、模糊问题归一化、证据回显和文档范围过滤。</p>
+          </div>
+          <div class="hero-metrics">
+            <div>
+              <span>向量库</span>
+              <strong>Milvus</strong>
+            </div>
+            <div>
+              <span>嵌入模型</span>
+              <strong>BGE-m3</strong>
+            </div>
+            <div>
+              <span>交互方式</span>
+              <strong>文本 / 语音</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel chat-panel">
+          <div class="panel-header">
+            <h2>提问</h2>
+            <div class="toolbar">
+              <button id="voice-btn" class="ghost-btn">语音输入</button>
+              <button id="clear-btn" class="ghost-btn">清空</button>
+            </div>
+          </div>
+
+          <div class="filters">
+            <label for="doc-filter">限定文档</label>
+            <select id="doc-filter" multiple></select>
+          </div>
+
+          <form id="chat-form" class="chat-form">
+            <textarea
+              id="question-input"
+              rows="4"
+              placeholder="输入你的问题，例如：该制度中关于审批权限的规定是什么？"
+              required
+            ></textarea>
+            <button type="submit" class="primary-btn">开始问答</button>
+          </form>
+
+          <div class="result-grid">
+            <article class="result-card">
+              <div class="result-head">
+                <h3>答案</h3>
+                <span id="intent-tag" class="status-tag">未分析</span>
+              </div>
+              <pre id="answer-output" class="answer-output">等待提问...</pre>
+            </article>
+
+            <article class="result-card">
+              <div class="result-head">
+                <h3>检索证据</h3>
+                <span id="question-normalized" class="subtle-text">-</span>
+              </div>
+              <div id="references-output" class="references-output"></div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <template id="document-item-template">
+      <div class="document-item">
+        <div>
+          <strong class="doc-name"></strong>
+          <p class="doc-meta"></p>
+        </div>
+        <button class="ghost-btn delete-doc-btn">删除</button>
+      </div>
+    </template>
+
+    <script src="/assets/app.js"></script>
+  </body>
+  </html>
