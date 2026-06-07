@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>注册 - RAG 对话工作台</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body class="auth-body">
+    <main class="auth-page">
+      <section class="auth-hero">
+        <p class="eyebrow">Create Account</p>
+        <h1>注册页面和登录页面分开显示</h1>
+        <p class="auth-copy">
+          在这里完成账号注册。注册成功后系统会自动为你登录，并直接带你进入聊天工作台，不需要再手动返回登录页。
+        </p>
+        <ul class="helper-list">
+          <li>用户名请尽量简洁好记，后续登录需要使用同一个用户名。</li>
+          <li>密码建议同时包含字母、数字，并避免与常用社交账号重复。</li>
+          <li>如果系统提示用户名已存在，请更换一个用户名重新提交。</li>
+        </ul>
+      </section>
+
+      <section class="auth-card">
+        <div class="auth-card-head">
+          <p class="eyebrow">Register</p>
+          <h2>创建新账号</h2>
+          <p class="subtle-text">请按提示完整填写信息。系统会在提交时逐项校验用户名格式、密码长度和两次密码是否一致。</p>
+        </div>
+
+        <div id="auth-notice" class="inline-notice inline-notice--info">
+          注册成功后会自动登录并进入聊天界面。
+        </div>
+
+        <form id="register-form" class="stack-form" data-page="register">
+          <label class="form-field">
+            <span>用户名</span>
+            <input
+              id="username"
+              name="username"
+              type="text"
+              minlength="4"
+              maxlength="20"
+              autocomplete="username"
+              placeholder="4-20 位中文、字母、数字或下划线"
+              required
+            />
+          </label>
+
+          <label class="form-field">
+            <span>密码</span>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              minlength="8"
+              maxlength="32"
+              autocomplete="new-password"
+              placeholder="8-32 位，需包含字母和数字"
+              required
+            />
+          </label>
+
+          <label class="form-field">
+            <span>确认密码</span>
+            <input
+              id="confirm-password"
+              name="confirmPassword"
+              type="password"
+              minlength="8"
+              maxlength="32"
+              autocomplete="new-password"
+              placeholder="请再次输入相同密码"
+              required
+            />
+          </label>
+
+          <button id="submit-btn" type="submit" class="primary-btn auth-submit">注册并自动登录</button>
+        </form>
+
+        <p class="auth-switch">
+          已经有账号？
+          <a href="/login">返回登录页面</a>
+        </p>
+      </section>
+    </main>
+
+    <script src="/assets/auth.js"></script>
+  </body>
+</html>

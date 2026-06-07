@@ -1,0 +1,74 @@
+# RAGgd 项目思维导图大纲
+
+- RAGgd 项目
+  - 项目定位
+    - 基于 FastAPI 的 PDF RAG 问答系统
+    - 前端使用原生 HTML、CSS、JS
+    - 面向文档上传、解析、索引、问答、鉴权、语音输入场景
+    - 兼容 OpenAI 风格 LLM API
+  - 系统入口
+    - `run.py` 负责启动 Uvicorn
+    - `app/main.py` 负责应用装配、生命周期和静态资源挂载
+    - `frontend/` 提供登录、注册、聊天页面
+  - API 层
+    - `auth` 用户注册、登录、退出、当前用户
+    - `documents` 文档上传、列表、详情、内容、删除
+    - `chat` 普通问答、SSE 流式问答、清理会话
+    - `speech` 语音转写
+    - `health` 健康检查
+  - 核心装配
+    - `AppContainer` 统一构建服务依赖
+    - 启动时执行模型与向量库 warmup
+    - 统一日志、异常处理、请求 ID 追踪
+  - 文档处理链路
+    - 上传 PDF 到 `data/uploads`
+    - `MetadataStore` 记录状态与元数据
+    - `MinerUPdfParser` 或本地解析器解析 PDF
+    - `TextCleaner` 清洗正文、表格单元格和水印
+    - 跨页表格合并
+    - 图片描述抽取与调试产物保存
+    - `DocumentChunker` 分文本、表格、图片三类切块
+    - `BgeM3Embedder` 向量化
+    - `MilvusVectorStore` 或内存向量库写入
+    - 解析结果与 chunk 持久化到 `data/parsed`
+  - RAG 问答链路
+    - `IntentAnalyzer` 识别查询意图
+    - 基于历史对话的查询改写与多查询变体
+    - 多路召回
+    - 稠密向量检索
+    - 可选 BM25 关键词检索
+    - RRF 融合
+    - 结构化加权排序
+    - rerank 精排
+    - prompt 构造与上下文压缩
+    - LLM 输出普通回答或 SSE 流式回答
+    - 证据不足时执行抽取重试和原问题回退
+  - 存储与依赖
+    - MySQL 存用户与认证数据
+    - Redis 存会话历史
+    - SQLite 存文档元数据
+    - Milvus 存向量索引
+    - 本地磁盘存上传文件、解析 JSON、日志和调试文件
+  - 关键配置
+    - LLM: `LLM_BASE_URL` `LLM_API_KEY` `LLM_MODEL`
+    - Embedding/Rerank: `EMBEDDING_MODEL_NAME` `RERANK_MODEL_NAME`
+    - Vector: `VECTOR_BACKEND` `MILVUS_URI` `MILVUS_COLLECTION`
+    - Storage: `UPLOAD_DIR` `PARSED_DIR` `DOCUMENT_DB_PATH`
+    - Auth/Session: `MYSQL_*` `REDIS_URL` `AUTH_*`
+    - Parser: `PDF_PARSER_BACKEND` `MINERU_*`
+    - Optional: `VISION_*` `SPEECH_*`
+  - 前端页面
+    - `login.html`
+    - `register.html`
+    - `index.html`
+    - `assets/app.js`
+    - `assets/auth.js`
+    - `assets/styles.css`
+  - 测试与辅助脚本
+    - `scripts/verify_table_pipeline.py`
+    - `test/` 存放实现截图和联调记录
+  - 部署关注点
+    - Python 3.11+
+    - 生产环境建议 `DEBUG=false`
+    - 必备依赖为 MySQL、Redis、LLM API
+    - Milvus 可用生产实例，也可先用内存后端验证
