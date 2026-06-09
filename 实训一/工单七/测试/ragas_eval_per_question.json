@@ -1,0 +1,112 @@
+{
+  "dataset_path": "G:\\eight_dim\\课堂笔记\\专高六\\RAG工单\\RAGgd\\scripts\\ragas_dataset_multi_10.json",
+  "sample_count": 10,
+  "metric_columns": [
+    "context_precision",
+    "context_recall",
+    "faithfulness",
+    "answer_relevancy"
+  ],
+  "questions": [
+    {
+      "id": "sample-1",
+      "question": "国泰君安2021年年度报告指出，当前面临的主要风险是哪两项？",
+      "ground_truth": "国泰君安2021年年度报告指出，当前面临的主要风险是信用风险和流动性风险。",
+      "answer": "信用风险和流动性风险。",
+      "context_precision": 0.5833333333041666,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6025340509357769
+    },
+    {
+      "id": "sample-2",
+      "question": "国泰君安2021年近三年利润分配方案表中，2021年度每10股派息数是多少？",
+      "ground_truth": "国泰君安2021年近三年利润分配方案表中，2021年度每10股派息数是5.40元（含税）。",
+      "answer": "国泰君安2021年度每10股派息数(含税)为5.40元。",
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6969603085504789
+    },
+    {
+      "id": "sample-3",
+      "question": "国泰君安2021年年度报告开头“重要提示”部分提到的公司负责人是谁？",
+      "ground_truth": "国泰君安2021年年度报告开头“重要提示”部分提到的公司负责人是贺青。",
+      "answer": "国泰君安2021年年度报告开头“重要提示”部分提到的公司负责人是贺青。",
+      "context_precision": 0.9999999999666667,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6696960291830447
+    },
+    {
+      "id": "sample-4",
+      "question": "中国太保2021年正式落地运行的新业务模式是什么？",
+      "ground_truth": "中国太保2021年正式落地运行的新业务模式是“保险产品 + 养老社区 + 专业服务”。",
+      "answer": "中国太保2021年正式落地运行的新业务模式是“保险产品 + 养老社区 + 专业服务”。该模式于2021年10月29日随着太保家园成都颐养社区与大理乐养社区两地同步开业而正式落地运行。",
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.7262694290530494
+    },
+    {
+      "id": "sample-5",
+      "question": "“太医管家”提供的一项服务是什么？",
+      "ground_truth": "“太医管家”提供的一项服务是线上问诊。",
+      "answer": "“太医管家”提供的一项服务是线上问诊。",
+      "context_precision": 0.999999999975,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9714276218027345
+    },
+    {
+      "id": "sample-6",
+      "question": "中国太保武汉研发中心于哪一年哪一月投入运营？",
+      "ground_truth": "中国太保武汉研发中心于2021年1月投入运营。",
+      "answer": "中国太保武汉研发中心于2021年1月投入运营。",
+      "context_precision": 0.99999999995,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.5939740213152942
+    },
+    {
+      "id": "sample-7",
+      "question": "招商证券2021年度利润分配方案中，每10股派发多少现金红利？",
+      "ground_truth": "招商证券2021年度利润分配方案中，每10股派发现金红利5.40元（含税）。",
+      "answer": "每10股派息5.40元（含税）。",
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6105398641459644
+    },
+    {
+      "id": "sample-8",
+      "question": "招商证券2021年年度报告中提到的风险类别之一是什么？",
+      "ground_truth": "招商证券2021年年度报告中提到的风险类别之一是市场风险。",
+      "answer": "招商证券2021年年度报告中提到的风险类别之一是市场风险。",
+      "context_precision": 0.8541666666453125,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.7669532385814126
+    },
+    {
+      "id": "sample-9",
+      "question": "招商证券2021年年度报告“重要提示”部分提到的公司负责人是谁？",
+      "ground_truth": "招商证券2021年年度报告“重要提示”部分提到的公司负责人是霍达。",
+      "answer": "招商证券2021年年度报告“重要提示”部分提到的公司负责人是霍达。",
+      "context_precision": 0.6666666666333333,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.7245713674416966
+    },
+    {
+      "id": "sample-10",
+      "question": "太保蓝公益“守护记忆”系列公益行动围绕哪个重点领域开展？",
+      "ground_truth": "太保蓝公益“守护记忆”系列公益行动围绕老年认知障碍领域开展。",
+      "answer": "太保蓝公益“守护记忆”系列公益行动围绕**老年认知障碍**领域开展。",
+      "context_precision": 0.9166666666361111,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6528589518406461
+    }
+  ]
+}
