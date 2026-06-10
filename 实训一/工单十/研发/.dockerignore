@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual env
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+
+# Data (runtime generated, mount as volume)
+data/uploads/
+data/parsed/
+data/documents/
+data/logs/
+data/vision_debug/
+data/images/
+data/mineru_debug/
+
+# Models (mount as volume or download in container)
+*.bin
+*.pt
+*.pth
+*.onnx
+*.safetensors
+
+# Docs and local tests
+docs/
+test/

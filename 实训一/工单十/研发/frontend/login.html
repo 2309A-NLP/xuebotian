@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登录 - RAG 对话工作台</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body class="auth-body">
+    <main class="auth-page">
+      <section class="auth-hero">
+        <p class="eyebrow">Secure Sign In</p>
+        <h1>先登录，再进入聊天界面</h1>
+        <p class="auth-copy">
+          登录成功后会自动跳转到聊天工作台。未登录时，聊天、文档上传和语音转写接口都会被拦截，并给出明确提示。
+        </p>
+        <ul class="helper-list">
+          <li>用户名支持 4-20 位中文、字母、数字或下划线。</li>
+          <li>密码需要 8-32 位，并同时包含字母和数字。</li>
+          <li>如果你是第一次使用，请先前往独立的注册页面创建账号。</li>
+        </ul>
+      </section>
+
+      <section class="auth-card">
+        <div class="auth-card-head">
+          <p class="eyebrow">Login</p>
+          <h2>账号登录</h2>
+          <p class="subtle-text">输入你已注册的用户名和密码，验证通过后会直接进入聊天工作台。</p>
+        </div>
+
+        <div id="auth-notice" class="inline-notice inline-notice--info">
+          登录后即可进入聊天界面。
+        </div>
+
+        <form id="login-form" class="stack-form" data-page="login">
+          <label class="form-field">
+            <span>用户名</span>
+            <input
+              id="username"
+              name="username"
+              type="text"
+              minlength="4"
+              maxlength="20"
+              autocomplete="username"
+              placeholder="例如：zhangsan_01"
+              required
+            />
+          </label>
+
+          <label class="form-field">
+            <span>密码</span>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              minlength="8"
+              maxlength="32"
+              autocomplete="current-password"
+              placeholder="请输入登录密码"
+              required
+            />
+          </label>
+
+          <button id="submit-btn" type="submit" class="primary-btn auth-submit">登录并进入聊天</button>
+        </form>
+
+        <p class="auth-switch">
+          还没有账号？
+          <a href="/register">前往注册页面</a>
+        </p>
+      </section>
+    </main>
+
+    <script src="/assets/auth.js"></script>
+  </body>
+</html>

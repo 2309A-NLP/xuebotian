@@ -1,0 +1,55 @@
+{
+  "doc_id": "doc_5b8d24543db4ea57",
+  "source_path": "data\\uploads\\doc_5b8d24543db4ea57.pdf",
+  "saved_at": "2026-06-08T08:40:42.487257",
+  "parts": [
+    {
+      "part_index": 1,
+      "page_range": [
+        1,
+        200
+      ],
+      "source_file": "doc_5b8d24543db4ea57_part_0001_0200.pdf",
+      "doc_id": "doc_5b8d24543db4ea57",
+      "zip_path": "data\\mineru_debug\\doc_5b8d24543db4ea57\\part_01_0001_0200.zip",
+      "result_path": "data\\mineru_debug\\doc_5b8d24543db4ea57\\part_01_0001_0200_result.json",
+      "raw_content_path": "data\\mineru_debug\\doc_5b8d24543db4ea57\\part_01_0001_0200_raw.json",
+      "flattened_content_list_path": "data\\mineru_debug\\doc_5b8d24543db4ea57\\part_01_0001_0200_flattened_content_list.json",
+      "archive_member_name": "doc_5b8d24543db4ea57_part_0001_0200/hybrid_auto/doc_5b8d24543db4ea57_part_0001_0200_content_list_v2.json",
+      "archive_member_format": "json",
+      "flattened_block_count": 2078
+    },
+    {
+      "part_index": 2,
+      "page_range": [
+        201,
+        400
+      ],
+      "source_file": "doc_5b8d24543db4ea57_part_0201_0400.pdf",
+      "doc_id": "doc_5b8d24543db4ea57",
+      "zip_path": "data\\mineru_debug\\doc_5b8d24543db4ea57\\part_02_0201_0400.zip",
+      "result_path": "data\\mineru_debug\\doc_5b8d24543db4ea57\\part_02_0201_0400_result.json",
+      "raw_content_path": "data\\mineru_debug\\doc_5b8d24543db4ea57\\part_02_0201_0400_raw.json",
+      "flattened_content_list_path": "data\\mineru_debug\\doc_5b8d24543db4ea57\\part_02_0201_0400_flattened_content_list.json",
+      "archive_member_name": "doc_5b8d24543db4ea57_part_0201_0400/hybrid_auto/doc_5b8d24543db4ea57_part_0201_0400_content_list_v2.json",
+      "archive_member_format": "json",
+      "flattened_block_count": 2029
+    },
+    {
+      "part_index": 3,
+      "page_range": [
+        401,
+        548
+      ],
+      "source_file": "doc_5b8d24543db4ea57_part_0401_0548.pdf",
+      "doc_id": "doc_5b8d24543db4ea57",
+      "zip_path": "data\\mineru_debug\\doc_5b8d24543db4ea57\\part_03_0401_0548.zip",
+      "result_path": "data\\mineru_debug\\doc_5b8d24543db4ea57\\part_03_0401_0548_result.json",
+      "raw_content_path": "data\\mineru_debug\\doc_5b8d24543db4ea57\\part_03_0401_0548_raw.json",
+      "flattened_content_list_path": "data\\mineru_debug\\doc_5b8d24543db4ea57\\part_03_0401_0548_flattened_content_list.json",
+      "archive_member_name": "doc_5b8d24543db4ea57_part_0401_0548/hybrid_auto/doc_5b8d24543db4ea57_part_0401_0548_content_list_v2.json",
+      "archive_member_format": "json",
+      "flattened_block_count": 1639
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+# ============================================================
+# RAG QA System - Docker Compose
+# 仅构建和运行应用本身；MySQL / Redis / Milvus 均使用外部服务
+# ============================================================
+
+services:
+  rag-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rag-gd10:latest
+    container_name: rag-gd10-app
+    restart: unless-stopped
+    env_file:
+      - .env
+
+    # GPU 支持（Linux + NVIDIA 环境可取消注释）
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
+    ports:
+      - "8000:8000"
+
+    environment:
+      - APP_HOST=0.0.0.0
+      - APP_PORT=8000
+      - APP_ENV=production
+      - DEBUG=false
+
+      # 外部依赖服务地址
+      - VECTOR_BACKEND=milvus
+      - MILVUS_URI=http://10.223.11.19:19530
+      - MYSQL_HOST=10.223.11.19
+      - MYSQL_PORT=3306
+      - MYSQL_USER=cs
+      - MYSQL_PASSWORD=123456
+      - MYSQL_DATABASE=rag_gd
+      - REDIS_URL=redis://10.223.11.19:6379/0
+
+      # 模型配置
+      - EMBEDDING_MODEL_NAME=/models/embedding/BGE-m3
+      - EMBEDDING_DEVICE=cpu
+      - EMBEDDING_BATCH_SIZE=16
+      - RERANK_ENABLED=true
+      - RERANK_MODEL_NAME=/models/rerank/bge-reranker-base
+
+    volumes:
+      - ./data/uploads:/app/data/uploads
+      - ./data/parsed:/app/data/parsed
+      - ./data/documents:/app/data/documents
+      - ./data/logs:/app/data/logs
+      - ./data/vision_debug:/app/data/vision_debug
+      - G:/eight_dim/model/BGE-m3:/models/embedding/BGE-m3:ro
+      - G:/eight_dim/model/bge-reranker-base:/models/rerank/bge-reranker-base:ro
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
