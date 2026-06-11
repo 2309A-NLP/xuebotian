@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文档问答</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body class="chat-body">
+    <div class="app-layout">
+      <aside class="sidebar">
+        <section class="brand-card">
+          <h1>文档问答</h1>
+        </section>
+
+        <section class="panel user-card">
+          <div class="panel-header">
+            <h2>当前账号</h2>
+            <button id="logout-btn" class="ghost-btn" type="button">退出登录</button>
+          </div>
+          <p id="current-user-name" class="user-name">正在确认登录状态...</p>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>会话列表</h2>
+            <button id="new-session-btn" class="ghost-btn" type="button">新建会话</button>
+          </div>
+          <div id="session-list" class="session-list"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>上传文档</h2>
+            <span id="upload-status" class="status-tag" data-state="idle">等待上传</span>
+          </div>
+          <form id="upload-form" class="stack-form">
+            <label class="upload-box" for="pdf-file">
+              <input id="pdf-file" type="file" accept=".pdf" required />
+              <span>选择一个 PDF 文件</span>
+              <small>上传后可直接开始提问。</small>
+            </label>
+            <button type="submit" class="primary-btn">上传文档</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>文档列表</h2>
+            <button id="refresh-docs" class="ghost-btn" type="button">刷新列表</button>
+          </div>
+          <div id="document-list" class="document-list"></div>
+        </section>
+      </aside>
+
+      <main class="chat-shell">
+        <header class="chat-header">
+          <div>
+            <h2>开始提问</h2>
+          </div>
+        </header>
+
+        <section class="chat-stage">
+          <div id="page-status" class="inline-notice inline-notice--info">正在准备聊天界面，请稍候。</div>
+
+          <div id="chat-messages" class="chat-messages" aria-live="polite"></div>
+
+          <div class="composer-shell">
+            <div class="composer-tools">
+              <button id="voice-btn" class="ghost-btn" type="button">语音输入</button>
+              <button id="clear-btn" class="ghost-btn" type="button">清空当前会话</button>
+            </div>
+
+            <form id="chat-form" class="stack-form">
+              <label class="sr-only" for="question-input">提问输入框</label>
+              <textarea
+                id="question-input"
+                rows="1"
+                placeholder="输入你的问题，例如：这份制度里关于审批权限的规定是什么？"
+                required
+              ></textarea>
+              <div class="composer-footer">
+                <span class="subtle-text">按 Enter 发送，按 Shift + Enter 换行。</span>
+                <button type="submit" class="primary-btn">发送问题</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <template id="document-item-template">
+      <div class="document-item">
+        <div>
+          <strong class="doc-name"></strong>
+          <p class="doc-meta"></p>
+        </div>
+        <button class="ghost-btn delete-doc-btn" type="button">删除</button>
+      </div>
+    </template>
+
+    <script src="/assets/app.js"></script>
+  </body>
+</html>

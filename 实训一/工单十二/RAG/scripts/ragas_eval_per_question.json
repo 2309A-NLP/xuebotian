@@ -1,0 +1,269 @@
+{
+  "dataset_path": "G:\\eight_dim\\课堂笔记\\专高六\\RAG工单\\RAGgd\\scripts\\ragas_dataset.json",
+  "sample_count": 16,
+  "metric_columns": [
+    "context_precision",
+    "context_recall",
+    "nv_context_relevance",
+    "faithfulness",
+    "answer_relevancy"
+  ],
+  "questions": [
+    {
+      "id": "ly-001",
+      "question": "武汉力源信息技术股份有限公司组织结构图中，销售部有几个部门构成，其中大客户销售部有几个销售处构成？",
+      "ground_truth": "销售部由 4 个部门构成，分别是电话及网络销售部、渠道销售部、大客户销售部和国际贸易部；其中大客户销售部由 6 个销售处构成，分别是珠海销售处、深圳销售处、北京销售处、武汉销售处、广州销售处和成都销售处。",
+      "answer": "根据组织结构图，销售部由四个部门构成：电话及网络销售部、渠道销售部、大客户销售部、国际贸易部。其中，大客户销售部由六个销售处构成：珠海销售处、深圳销售处、北京销售处、武汉销售处、广州销售处、成都销售处。",
+      "context_stats": {
+        "context_count": 10,
+        "context_char_total": 10110,
+        "context_char_max": 4580
+      },
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "nv_context_relevance": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6878263455162212
+    },
+    {
+      "id": "ly-002",
+      "question": "武汉力源信息技术股份有限公司招股意向书中，从 2008 年中国 IC 市场应用结构与增长图中可以看出，增长率最快的是哪个行业？负增长的是哪个行业？",
+      "ground_truth": "增长率最快的是汽车行业，增长率为 14.0%；负增长的是 IC 卡行业，增长率为 -2.0%。",
+      "answer": "根据检索内容中“2008 年中国 IC 市场应用结构与增长(亿元)”图表的增长率数据：\n*   增长率最快的是**汽车**行业，增长率为**14.0%**。\n*   负增长的是**IC卡**行业，增长率为**-2.0%**。",
+      "context_stats": {
+        "context_count": 10,
+        "context_char_total": 8832,
+        "context_char_max": 4580
+      },
+      "context_precision": 0.99999999995,
+      "context_recall": 1.0,
+      "nv_context_relevance": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.8453529672209991
+    },
+    {
+      "id": "ly-003",
+      "question": "武汉力源信息技术股份有限公司本次发行股数是多少，占发行后总股本的比例是多少？",
+      "ground_truth": "本次发行股数为 1,670 万股，占发行后总股本的比例为 25.04%。",
+      "answer": "本次发行股数为1,670万股，占发行后总股本的比例为25.04%。",
+      "context_stats": {
+        "context_count": 10,
+        "context_char_total": 7621,
+        "context_char_max": 1009
+      },
+      "context_precision": 0.3333333333,
+      "context_recall": 1.0,
+      "nv_context_relevance": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6362685655634679
+    },
+    {
+      "id": "ly-004",
+      "question": "武汉力源信息技术股份有限公司本次募集资金拟投资哪些项目？",
+      "ground_truth": "本次募集资金拟投资仓储及物流中心、研发中心、电子商务平台、扩充产品种类和数量、其他与主营业务相关的营运资金。",
+      "answer": "武汉力源信息技术股份有限公司本次募集资金拟投资以下五个项目：\n1.  仓储及物流中心，项目总投资3,393.40万元；\n2.  研发中心，项目总投资1,526.38万元；\n3.  电子商务平台，项目总投资2,492.78万元；\n4.  扩充产品种类和数量，项目总投资9,000.00万元；\n5.  其他与主营业务相关的营运资金。",
+      "context_stats": {
+        "context_count": 10,
+        "context_char_total": 4233,
+        "context_char_max": 910
+      },
+      "context_precision": 0.7683333333179667,
+      "context_recall": 1.0,
+      "nv_context_relevance": 1.0,
+      "faithfulness": 0.9,
+      "answer_relevancy": 0.6254609701678264
+    },
+    {
+      "id": "ly-005",
+      "question": "与武汉力源信息技术股份有限公司存在控制关系的关联方是谁，持股比例和本公司关系是什么？",
+      "ground_truth": "与武汉力源信息技术股份有限公司存在控制关系的关联方是**赵马克**。其持股比例为**42.35%**，与本公司关系为**公司控股股东**。",
+      "answer": "与武汉力源信息技术股份有限公司存在控制关系的关联方是赵马克，持股比例为42.35%，与本公司关系为“公司控股股东”。",
+      "context_stats": {
+        "context_count": 10,
+        "context_char_total": 7494,
+        "context_char_max": 2283
+      },
+      "context_precision": 0.6666666666444444,
+      "context_recall": 1.0,
+      "nv_context_relevance": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.5818484875925981
+    },
+    {
+      "id": "ly-006",
+      "question": "与武汉力源信息技术股份有限公司不存在控制关系的关联方企业有哪些？",
+      "ground_truth": "与武汉力源信息技术股份有限公司不存在控制关系的关联方企业有：融冰投资、武汉博润、上海博润、听音投资、联众聚源、力源贸易、普芯达。",
+      "answer": "与武汉力源信息技术股份有限公司不存在控制关系的关联方企业有：融冰投资、武汉博润、上海博润、听音投资、联众聚源、力源贸易、普芯达。",
+      "context_stats": {
+        "context_count": 10,
+        "context_char_total": 9835,
+        "context_char_max": 4580
+      },
+      "context_precision": 0.499999999975,
+      "context_recall": 1.0,
+      "nv_context_relevance": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.7428941387289735
+    },
+    {
+      "id": "xt-001",
+      "question": "报告期内，武汉兴图新科电子股份有限公司来自军用领域的收入分别是多少？",
+      "ground_truth": "报告期内，来自军用领域的收入分别为 6,464.51 万元、14,414.16 万元、18,780.67 万元和 4,627.14 万元。",
+      "answer": "报告期内，武汉兴图新科电子股份有限公司来自军用领域的收入分别为：\n2016年：6,464.52万元（直接军方3,433.34万元 + 间接军方3,031.18万元）。\n2017年：14,414.15万元（直接军方6,277.49万元 + 间接军方8,136.66万元）。\n2018年：18,780.67万元（总收入19,802.48万元 - 民品收入1,021.81万元）。\n2019年1-6月：4,627.14万元（总收入4,904.71万元 - 民品收入277.57万元）。",
+      "context_stats": {
+        "context_count": 9,
+        "context_char_total": 9216,
+        "context_char_max": 2773
+      },
+      "context_precision": 0.9999999999,
+      "context_recall": 0.0,
+      "nv_context_relevance": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6897581210241045
+    },
+    {
+      "id": "xt-002",
+      "question": "武汉兴图新科电子股份有限公司参与制定了哪个技术标准？",
+      "ground_truth": "公司参与制定了全军第一个视频指挥系统技术标准，即《某视频技术规范 1.0》。",
+      "answer": "武汉兴图新科电子股份有限公司参与制定了全军第一个视频指挥系统技术标准（即《某视频技术规范 1.0》）。",
+      "context_stats": {
+        "context_count": 10,
+        "context_char_total": 5294,
+        "context_char_max": 925
+      },
+      "context_precision": 0.8260204081514649,
+      "context_recall": 1.0,
+      "nv_context_relevance": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6088554562025881
+    },
+    {
+      "id": "xt-003",
+      "question": "报告期内，武汉兴图新科电子股份有限公司来自军用领域的收入占主营业务收入的比重分别是多少？",
+      "ground_truth": "报告期内，来自军用领域的收入占主营业务收入的比重分别为 82.10%、97.31%、94.84% 和 94.34%。",
+      "answer": "报告期内，武汉兴图新科电子股份有限公司来自军用领域的收入占主营业务收入的比重分别为：2016年82.10%，2017年97.31%，2018年94.84%，2019年1-6月94.34%。",
+      "context_stats": {
+        "context_count": 9,
+        "context_char_total": 10142,
+        "context_char_max": 2773
+      },
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "nv_context_relevance": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.714331464158669
+    },
+    {
+      "id": "xt-004",
+      "question": "根据武汉兴图新科电子股份有限公司招股意向书，电子信息行业的上游涉及哪些企业？",
+      "ground_truth": "电子信息行业的上游涉及的企业类型为**电子元器件制造业**和**金属制品业**。",
+      "answer": "根据武汉兴图新科电子股份有限公司招股意向书，电子信息行业的上游涉及两类企业：\n1.  电子元器件制造业企业，供应元器件、视音频外设等。\n2.  金属制品业企业，供应机箱、其他壳体等金属壳体。",
+      "context_stats": {
+        "context_count": 10,
+        "context_char_total": 4412,
+        "context_char_max": 948
+      },
+      "context_precision": 0.699999999965,
+      "context_recall": 1.0,
+      "nv_context_relevance": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6487013704597339
+    },
+    {
+      "id": "xt-005",
+      "question": "武汉兴图新科电子股份有限公司在哪个领域已经成为重要供应商？",
+      "ground_truth": "公司已经成为国防军队视频指挥领域的重要供应商。",
+      "answer": "武汉兴图新科电子股份有限公司在军队视频指挥领域已经成为重要供应商。",
+      "context_stats": {
+        "context_count": 10,
+        "context_char_total": 7057,
+        "context_char_max": 3056
+      },
+      "context_precision": 0.4692857142763286,
+      "context_recall": 1.0,
+      "nv_context_relevance": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.5735466894133885
+    },
+    {
+      "id": "xt-006",
+      "question": "根据武汉兴图新科电子股份有限公司招股意向书，电子信息行业的下游主要包括哪些行业？",
+      "ground_truth": "电子信息行业的下游主要包括**军队、政府机关、能源等行业企业**，并通过系统集成商服务于**军队和企事业单位**这两类最终客户。",
+      "answer": "根据武汉兴图新科电子股份有限公司招股意向书，电子信息行业的下游主要包括军队、政府机关、能源等行业企业。",
+      "context_stats": {
+        "context_count": 10,
+        "context_char_total": 4229,
+        "context_char_max": 1069
+      },
+      "context_precision": 0.6845238095066964,
+      "context_recall": 1.0,
+      "nv_context_relevance": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.7107888047933425
+    },
+    {
+      "id": "xt-007",
+      "question": "武汉兴图新科电子股份有限公司参与的哪个工程荣获了国家科技进步一等奖？",
+      "ground_truth": "公司参与的“某情报、指挥、控制与通信网络一体化工程”荣获了国家科技进步一等奖。",
+      "answer": "武汉兴图新科电子股份有限公司参与的工程是“某情报、指挥、控制与通信网络一体化工程”（即相当于美军的C4ISR系统），该工程于2014年12月荣获国家科技进步一等奖。",
+      "context_stats": {
+        "context_count": 10,
+        "context_char_total": 5659,
+        "context_char_max": 925
+      },
+      "context_precision": 0.8736394557698323,
+      "context_recall": 1.0,
+      "nv_context_relevance": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.5924715708747593
+    },
+    {
+      "id": "xt-008",
+      "question": "武汉兴图新科电子股份有限公司注册资本是多少？",
+      "ground_truth": "注册资本为 5,520.00 万元。",
+      "answer": "武汉兴图新科电子股份有限公司的注册资本是5,520.00万元。",
+      "context_stats": {
+        "context_count": 10,
+        "context_char_total": 8559,
+        "context_char_max": 3056
+      },
+      "context_precision": 0.49999999995,
+      "context_recall": 1.0,
+      "nv_context_relevance": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.5656136319806139
+    },
+    {
+      "id": "xt-009",
+      "question": "武汉兴图新科电子股份有限公司法定代表人是谁？",
+      "ground_truth": "法定代表人为程家明。",
+      "answer": "武汉兴图新科电子股份有限公司的法定代表人是程家明。",
+      "context_stats": {
+        "context_count": 10,
+        "context_char_total": 7536,
+        "context_char_max": 3056
+      },
+      "context_precision": 0.6866666666529333,
+      "context_recall": 1.0,
+      "nv_context_relevance": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.7326063354497773
+    },
+    {
+      "id": "xt-010",
+      "question": "武汉兴图新科电子股份有限公司计划使用本次发行募集资金的多少用于补充流动资金？",
+      "ground_truth": "公司计划使用本次发行募集资金 15,000.00 万元用于补充流动资金。",
+      "answer": "武汉兴图新科电子股份有限公司计划使用本次发行募集资金15,000万元用于补充流动资金。",
+      "context_stats": {
+        "context_count": 10,
+        "context_char_total": 6861,
+        "context_char_max": 3056
+      },
+      "context_precision": 0.8041666666465626,
+      "context_recall": 1.0,
+      "nv_context_relevance": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6431781132372034
+    }
+  ]
+}
