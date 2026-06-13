@@ -1,0 +1,11 @@
+### model
+model_name_or_path: G:\eight_dim\model\Qwen3-VL-2B-Instruct
+adapter_name_or_path: G:\eight_dim\github_projects\Lora_fine-tuning\LLaMA-Factory\saves\qwen3-vl-2b-patent-lora
+template: qwen3_vl
+finetuning_type: lora
+
+### export
+export_dir: G:\eight_dim\github_projects\Lora_fine-tuning\LLaMA-Factory\saves\merge_model
+export_size: 2
+export_device: cpu
+export_legacy_format: false
