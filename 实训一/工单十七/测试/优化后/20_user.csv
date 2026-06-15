@@ -1,0 +1,21 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1781445057087,11948,HTTP请求,200,,线程组 1-2,text,true,,65375,715,20,20,http://127.0.0.1/api/v1/chat/completions,11948,0,1
+1781445058585,14267,HTTP请求,200,,线程组 1-5,text,true,,65021,715,19,19,http://127.0.0.1/api/v1/chat/completions,14267,0,1
+1781445056582,16273,HTTP请求,200,,线程组 1-1,text,true,,66102,715,18,18,http://127.0.0.1/api/v1/chat/completions,16273,0,0
+1781445059084,13773,HTTP请求,200,,线程组 1-6,text,true,,65865,715,17,17,http://127.0.0.1/api/v1/chat/completions,13773,0,1
+1781445063084,10880,HTTP请求,200,,线程组 1-14,text,true,,65066,715,16,16,http://127.0.0.1/api/v1/chat/completions,10880,0,0
+1781445058082,15882,HTTP请求,200,,线程组 1-4,text,true,,62116,715,16,16,http://127.0.0.1/api/v1/chat/completions,15882,0,1
+1781445063586,11398,HTTP请求,200,,线程组 1-15,text,true,,65218,715,14,14,http://127.0.0.1/api/v1/chat/completions,11397,0,1
+1781445059586,16757,HTTP请求,200,,线程组 1-7,text,true,,66261,715,13,13,http://127.0.0.1/api/v1/chat/completions,16757,0,0
+1781445061086,15313,HTTP请求,200,,线程组 1-10,text,true,,64857,715,12,12,http://127.0.0.1/api/v1/chat/completions,15313,0,1
+1781445060086,16798,HTTP请求,200,,线程组 1-8,text,true,,66273,715,11,11,http://127.0.0.1/api/v1/chat/completions,16798,0,1
+1781445057583,19614,HTTP请求,200,,线程组 1-3,text,true,,66626,715,10,10,http://127.0.0.1/api/v1/chat/completions,19614,0,1
+1781445060586,16838,HTTP请求,200,,线程组 1-9,text,true,,66103,715,9,9,http://127.0.0.1/api/v1/chat/completions,16837,0,1
+1781445064588,13995,HTTP请求,200,,线程组 1-17,text,true,,65915,715,8,8,http://127.0.0.1/api/v1/chat/completions,13995,0,1
+1781445061586,18702,HTTP请求,200,,线程组 1-11,text,true,,65657,715,7,7,http://127.0.0.1/api/v1/chat/completions,18701,0,1
+1781445062087,19740,HTTP请求,200,,线程组 1-12,text,true,,66089,715,6,6,http://127.0.0.1/api/v1/chat/completions,19740,0,1
+1781445062587,19253,HTTP请求,200,,线程组 1-13,text,true,,65708,715,5,5,http://127.0.0.1/api/v1/chat/completions,19252,0,1
+1781445065588,17181,HTTP请求,200,,线程组 1-19,text,true,,66130,715,4,4,http://127.0.0.1/api/v1/chat/completions,17180,0,1
+1781445066090,18211,HTTP请求,200,,线程组 1-20,text,true,,66282,715,3,3,http://127.0.0.1/api/v1/chat/completions,18211,0,1
+1781445065088,20141,HTTP请求,200,,线程组 1-18,text,true,,66089,715,2,2,http://127.0.0.1/api/v1/chat/completions,20140,0,0
+1781445064087,26715,HTTP请求,200,,线程组 1-16,text,true,,63046,715,1,1,http://127.0.0.1/api/v1/chat/completions,26715,0,1

@@ -1,0 +1,6 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1781447139344,19624,HTTP请求,200,,user_question 1-4,text,true,,67052,712,5,5,http://127.0.0.1/api/v1/chat/completions,19624,0,0
+1781447138343,22046,HTTP请求,200,,user_question 1-3,text,true,,67129,712,4,4,http://127.0.0.1/api/v1/chat/completions,22046,0,1
+1781447136342,29641,HTTP请求,200,,user_question 1-1,text,true,,67181,712,3,3,http://127.0.0.1/api/v1/chat/completions,29641,0,1
+1781447140345,32772,HTTP请求,200,,user_question 1-5,text,true,,67937,712,2,2,http://127.0.0.1/api/v1/chat/completions,32771,0,2
+1781447137354,37219,HTTP请求,200,,user_question 1-2,text,true,,67643,712,1,1,http://127.0.0.1/api/v1/chat/completions,37218,0,1
