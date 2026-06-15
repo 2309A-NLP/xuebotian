@@ -1,0 +1,917 @@
+{
+  "metadata": {
+    "generated_at": "2026-06-15T13:35:48.837254",
+    "version": "1.0",
+    "config": {
+      "char_threshold": 100,
+      "scan_threshold": 0.7
+    }
+  },
+  "summary": {
+    "total_documents": 34,
+    "total_size_bytes": 14463470,
+    "total_size_mb": 13.79
+  },
+  "format_distribution": {
+    "total_documents": 34,
+    "distribution": {
+      ".pdf": {
+        "count": 34,
+        "percentage": 100.0
+      }
+    }
+  },
+  "pdf_analysis": {
+    "total_pdfs": 34,
+    "by_type": {
+      "text": {
+        "count": 0
+      },
+      "scanned": {
+        "count": 0
+      },
+      "mixed": {
+        "count": 34
+      },
+      "error": {
+        "count": 0
+      }
+    },
+    "pending_confirmation": [
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214166529U.pdf",
+        "type": "mixed",
+        "scan_ratio": 33.33
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN110977293A.pdf",
+        "type": "mixed",
+        "scan_ratio": 28.57
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN111043613A.pdf",
+        "type": "mixed",
+        "scan_ratio": 14.29
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214197581U.pdf",
+        "type": "mixed",
+        "scan_ratio": 20.0
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN111046557B.pdf",
+        "type": "mixed",
+        "scan_ratio": 18.18
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214291541U.pdf",
+        "type": "mixed",
+        "scan_ratio": 37.5
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214292768U.pdf",
+        "type": "mixed",
+        "scan_ratio": 28.57
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214404885U.pdf",
+        "type": "mixed",
+        "scan_ratio": 20.0
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214320289U.pdf",
+        "type": "mixed",
+        "scan_ratio": 25.0
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214444039U.pdf",
+        "type": "mixed",
+        "scan_ratio": 37.5
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214628889U.pdf",
+        "type": "mixed",
+        "scan_ratio": 28.57
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214824847U.pdf",
+        "type": "mixed",
+        "scan_ratio": 16.67
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214913612U.pdf",
+        "type": "mixed",
+        "scan_ratio": 16.67
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214996075U.pdf",
+        "type": "mixed",
+        "scan_ratio": 16.67
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214686573U.pdf",
+        "type": "mixed",
+        "scan_ratio": 9.09
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215141998U.pdf",
+        "type": "mixed",
+        "scan_ratio": 28.57
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215143240U.pdf",
+        "type": "mixed",
+        "scan_ratio": 25.0
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215199357U.pdf",
+        "type": "mixed",
+        "scan_ratio": 28.57
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215225682U.pdf",
+        "type": "mixed",
+        "scan_ratio": 28.57
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215281019U.pdf",
+        "type": "mixed",
+        "scan_ratio": 20.0
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215247818U.pdf",
+        "type": "mixed",
+        "scan_ratio": 16.67
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215487637U.pdf",
+        "type": "mixed",
+        "scan_ratio": 20.0
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215445341U.pdf",
+        "type": "mixed",
+        "scan_ratio": 25.0
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215489715U.pdf",
+        "type": "mixed",
+        "scan_ratio": 28.57
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215569021U.pdf",
+        "type": "mixed",
+        "scan_ratio": 25.0
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215711296U.pdf",
+        "type": "mixed",
+        "scan_ratio": 37.5
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215752548U.pdf",
+        "type": "mixed",
+        "scan_ratio": 28.57
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215777375U.pdf",
+        "type": "mixed",
+        "scan_ratio": 50.0
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215787378U.pdf",
+        "type": "mixed",
+        "scan_ratio": 28.57
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215838706U.pdf",
+        "type": "mixed",
+        "scan_ratio": 25.0
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215855203U.pdf",
+        "type": "mixed",
+        "scan_ratio": 14.29
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215886016U.pdf",
+        "type": "mixed",
+        "scan_ratio": 28.57
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215891116U.pdf",
+        "type": "mixed",
+        "scan_ratio": 50.0
+      },
+      {
+        "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215892353U.pdf",
+        "type": "mixed",
+        "scan_ratio": 16.67
+      }
+    ]
+  },
+  "length_distribution": {
+    "count": 34,
+    "percentiles": {
+      "P25": 4442,
+      "P50": 4902,
+      "P75": 5968,
+      "P90": 6871,
+      "P99": 11323
+    },
+    "distribution": {
+      "mean": 5218.79,
+      "median": 4902,
+      "min": 2272,
+      "max": 11323
+    },
+    "buckets": {
+      "0-1K": 0,
+      "1K-10K": 33,
+      "10K-100K": 1,
+      "100K-1M": 0,
+      "1M+": 0
+    }
+  },
+  "duplicates": {
+    "duplicate_groups": 0,
+    "duplicate_files": 0,
+    "groups": []
+  },
+  "sensitive_info": {
+    "total_findings": 36,
+    "by_type": {
+      "phone_landline": {
+        "count": 36,
+        "items": [
+          {
+            "type": "phone_landline",
+            "value": "202023294752",
+            "context": "...授权公告号 CN 214166529 U (45)授权公告日 2021.09.10 (21)申请号 202023294752.3 (22)申请日 2020.12.31 (73)专利权人 昆山墨佳工业设备有限公司 地址 215...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214166529U.pdf",
+            "filename": "CN214166529U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "201911277352",
+            "context": "...申请公布号 CN 110977293 A (43)申请公布日 2020.04.10 (21)申请号 201911277352.0 (22)申请日 2019.12.07 (71)申请人 山西省工业设备安装集团有限公司 地址 0...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN110977293A.pdf",
+            "filename": "CN110977293A.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "201911254975",
+            "context": "...申请公布号 CN 111043613 A (43)申请公布日 2020.04.21 (21)申请号 201911254975.6 (22)申请日 2019.12.10 (71)申请人 南京昊安工业设备有限公司 地址 2100...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN111043613A.pdf",
+            "filename": "CN111043613A.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202022967727",
+            "context": "...授权公告号 CN 214197581 U (45)授权公告日 2021.09.14 (21)申请号 202022967727.0 (22)申请日 2020.12.10 (73)专利权人 湖北省建工工业设备安装有限公 司 地址...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214197581U.pdf",
+            "filename": "CN214197581U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "201911274184",
+            "context": "...授权公告号 CN 111046557 B (45)授权公告日 2023.05.30 (21)申请号 201911274184.X G06Q 10/0631(2023.01) G06Q 10/0639(2023.01) (22...",
+            "position": 75,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN111046557B.pdf",
+            "filename": "CN111046557B.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202023285459",
+            "context": "...授权公告号 CN 214291541 U (45)授权公告日 2021.09.28 (21)申请号 202023285459.0 (22)申请日 2020.12.30 (73)专利权人 昆山墨佳工业设备有限公司 地址 215...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214291541U.pdf",
+            "filename": "CN214291541U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202023312155",
+            "context": "...授权公告号 CN 214292768 U (45)授权公告日 2021.09.28 (21)申请号 202023312155.9 (22)申请日 2020.12.31 (73)专利权人 昆山墨佳工业设备有限公司 地址 215...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214292768U.pdf",
+            "filename": "CN214292768U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202120498983",
+            "context": "...授权公告号 CN 214404885 U (45)授权公告日 2021.10.15 (21)申请号 202120498983.1 (22)申请日 2021.03.09 (73)专利权人 重庆洪峰工业设备安装有限公司 地址 4...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214404885U.pdf",
+            "filename": "CN214404885U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202022693919",
+            "context": "...授权公告号 CN 214320289 U (45)授权公告日 2021.10.01 (21)申请号 202022693919.7 B07B 1/28(2006.01) B07B 1/42(2006.01) (22)申请日 2...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214320289U.pdf",
+            "filename": "CN214320289U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202023302790",
+            "context": "...授权公告号 CN 214444039 U (45)授权公告日 2021.10.22 (21)申请号 202023302790.9 (22)申请日 2020.12.31 (73)专利权人 昆山墨佳工业设备有限公司 地址 215...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214444039U.pdf",
+            "filename": "CN214444039U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202022928411",
+            "context": "...授权公告号 CN 214628889 U (45)授权公告日 2021.11.09 (21)申请号 202022928411.0 (22)申请日 2020.12.09 (73)专利权人 青岛绿源金地工业设备有限公司 地址 2...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214628889U.pdf",
+            "filename": "CN214628889U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202023330339",
+            "context": "...授权公告号 CN 214824847 U (45)授权公告日 2021.11.23 (21)申请号 202023330339.8 B65C 1/00(2006.01) (22)申请日 2020.12.30 (73)专利权人...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214824847U.pdf",
+            "filename": "CN214824847U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202121526135",
+            "context": "...授权公告号 CN 214913612 U (45)授权公告日 2021.11.30 (21)申请号 202121526135.3 (22)申请日 2021.07.06 (73)专利权人 四川鹦鹉螺工业设备运行管理有 限公司...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214913612U.pdf",
+            "filename": "CN214913612U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202120812480",
+            "context": "...授权公告号 CN 214996075 U (45)授权公告日 2021.12.03 (21)申请号 202120812480.7 (22)申请日 2021.04.20 (73)专利权人 山西省工业设备安装集团有限公 司 地址...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214996075U.pdf",
+            "filename": "CN214996075U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202120515931",
+            "context": "...授权公告号 CN 214686573 U (45)授权公告日 2021.11.12 (21)申请号 202120515931.0 (22)申请日 2021.03.11 (73)专利权人 湖南全宇工业设备有限公司 地址 410...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214686573U.pdf",
+            "filename": "CN214686573U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202121498496",
+            "context": "...授权公告号 CN 215141998 U (45)授权公告日 2021.12.14 (21)申请号 202121498496.1 C05G 3/00(2020.01) C05G 5/12(2020.01) (22)申请日 2...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215141998U.pdf",
+            "filename": "CN215141998U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "201620734138",
+            "context": "...害物质，富含 大量有益物质，是绿色食品生产的主要养分。 [0003] 在中国实用新型专利申请号：CN201620734138.9中公开了一种连续式防堵塞的有 机肥生产用高效益包膜生产线，包括冷包膜滚筒、冷风干燥设备，所述冷包...",
+            "position": 244,
+            "page": 3,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215141998U.pdf",
+            "filename": "CN215141998U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202121498501",
+            "context": "...授权公告号 CN 215143240 U (45)授权公告日 2021.12.14 (21)申请号 202121498501.9 (22)申请日 2021.07.02 (73)专利权人 泰安中意重型工业设备有限公司 地址 2...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215143240U.pdf",
+            "filename": "CN215143240U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "201710389850",
+            "context": "...合回收其中的各 种有用组分，使原料得到充分的合理利用。 [0003] 在中国实用新型专利申请号：CN201710389850.9中公开了一种附着点式收尘装 置，包括混合机和收尘装置，混合机通过上方中心轴处设置的混合机主轴和电...",
+            "position": 210,
+            "page": 3,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215143240U.pdf",
+            "filename": "CN215143240U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202120921563",
+            "context": "...授权公告号 CN 215199357 U (45)授权公告日 2021.12.17 (21)申请号 202120921563.X (22)申请日 2021.04.29 (73)专利权人 青岛偲迈特工业设备有限公司 地址 26...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215199357U.pdf",
+            "filename": "CN215199357U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202121538926",
+            "context": "...授权公告号 CN 215225682 U (45)授权公告日 2021.12.21 (21)申请号 202121538926.8 (22)申请日 2021.07.07 (73)专利权人 南京音联工业设备有限公司 地址 211...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215225682U.pdf",
+            "filename": "CN215225682U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202121567674",
+            "context": "...授权公告号 CN 215281019 U (45)授权公告日 2021.12.24 (21)申请号 202121567674.1 (22)申请日 2021.07.09 (73)专利权人 苏州安捷利工业设备有限公司 地址 21...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215281019U.pdf",
+            "filename": "CN215281019U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202121271938",
+            "context": "...授权公告号 CN 215247818 U (45)授权公告日 2021.12.21 (21)申请号 202121271938.9 (22)申请日 2021.06.08 (73)专利权人 深圳市成双工业设备有限公司 地址 51...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215247818U.pdf",
+            "filename": "CN215247818U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202121318546",
+            "context": "...授权公告号 CN 215487637 U (45)授权公告日 2022.01.11 (21)申请号 202121318546.3 (22)申请日 2021.06.15 (73)专利权人 石家庄希戈尔工业设备有限公司 地址 0...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215487637U.pdf",
+            "filename": "CN215487637U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202121734457",
+            "context": "...授权公告号 CN 215445341 U (45)授权公告日 2022.01.07 (21)申请号 202121734457.7 (22)申请日 2021.07.28 (73)专利权人 重庆天马工业设备安装有限公司 地址 4...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215445341U.pdf",
+            "filename": "CN215445341U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202122156797",
+            "context": "...授权公告号 CN 215489715 U (45)授权公告日 2022.01.11 (21)申请号 202122156797.2 (22)申请日 2021.09.07 (73)专利权人 天津燃洁斯工业设备有限公司 地址 30...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215489715U.pdf",
+            "filename": "CN215489715U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202122068260",
+            "context": "...授权公告号 CN 215569021 U (45)授权公告日 2022.01.18 (21)申请号 202122068260.0 (22)申请日 2021.08.30 (73)专利权人 上海纽固工业设备有限公司 地址 201...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215569021U.pdf",
+            "filename": "CN215569021U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202121066228",
+            "context": "...授权公告号 CN 215711296 U (45)授权公告日 2022.02.01 (21)申请号 202121066228.2 B66C 23/72(2006.01) (22)申请日 2021.05.18 (73)专利权人...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215711296U.pdf",
+            "filename": "CN215711296U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202122115231",
+            "context": "...授权公告号 CN 215752548 U (45)授权公告日 2022.02.08 (21)申请号 202122115231.5 (22)申请日 2021.09.03 (73)专利权人 苏州怡丰工业设备有限公司 地址 215...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215752548U.pdf",
+            "filename": "CN215752548U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202121504852",
+            "context": "...授权公告号 CN 215777375 U (45)授权公告日 2022.02.11 (21)申请号 202121504852.6 (22)申请日 2021.07.02 (73)专利权人 浙江省工业设备安装集团有限公 司 地址...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215777375U.pdf",
+            "filename": "CN215777375U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202121503297",
+            "context": "...授权公告号 CN 215787378 U (45)授权公告日 2022.02.11 (21)申请号 202121503297.5 (22)申请日 2021.07.02 (73)专利权人 浙江省工业设备安装集团有限公 司 地址...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215787378U.pdf",
+            "filename": "CN215787378U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202121578988",
+            "context": "...授权公告号 CN 215838706 U (45)授权公告日 2022.02.18 (21)申请号 202121578988.1 (22)申请日 2021.07.13 (73)专利权人 熙力（浙江）工业设备有限公司 地址 3...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215838706U.pdf",
+            "filename": "CN215838706U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202122071473",
+            "context": "...授权公告号 CN 215855203 U (45)授权公告日 2022.02.18 (21)申请号 202122071473.9 (22)申请日 2021.08.30 (73)专利权人 昆山宏格工业设备有限公司 地址 215...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215855203U.pdf",
+            "filename": "CN215855203U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202122454583",
+            "context": "...授权公告号 CN 215886016 U (45)授权公告日 2022.02.22 (21)申请号 202122454583.3 (22)申请日 2021.10.12 (73)专利权人 湖南省工业设备安装有限公司 地址 41...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215886016U.pdf",
+            "filename": "CN215886016U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202121347156",
+            "context": "...授权公告号 CN 215891116 U (45)授权公告日 2022.02.22 (21)申请号 202121347156.9 (22)申请日 2021.06.17 (73)专利权人 石家庄希戈尔工业设备有限公司 地址 0...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215891116U.pdf",
+            "filename": "CN215891116U.pdf"
+          },
+          {
+            "type": "phone_landline",
+            "value": "202122169281",
+            "context": "...授权公告号 CN 215892353 U (45)授权公告日 2022.02.22 (21)申请号 202122169281.1 (22)申请日 2021.09.08 (73)专利权人 上海岱鼎工业设备有限公司 地址 201...",
+            "position": 84,
+            "page": 1,
+            "document": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215892353U.pdf",
+            "filename": "CN215892353U.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "documents": [
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214166529U.pdf",
+      "name": "CN214166529U.pdf",
+      "extension": ".pdf",
+      "size": 349924,
+      "char_count": 3610,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN110977293A.pdf",
+      "name": "CN110977293A.pdf",
+      "extension": ".pdf",
+      "size": 364128,
+      "char_count": 4964,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN111043613A.pdf",
+      "name": "CN111043613A.pdf",
+      "extension": ".pdf",
+      "size": 517519,
+      "char_count": 6871,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214197581U.pdf",
+      "name": "CN214197581U.pdf",
+      "extension": ".pdf",
+      "size": 298817,
+      "char_count": 2272,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN111046557B.pdf",
+      "name": "CN111046557B.pdf",
+      "extension": ".pdf",
+      "size": 1249481,
+      "char_count": 8053,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214291541U.pdf",
+      "name": "CN214291541U.pdf",
+      "extension": ".pdf",
+      "size": 395922,
+      "char_count": 4902,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214292768U.pdf",
+      "name": "CN214292768U.pdf",
+      "extension": ".pdf",
+      "size": 316756,
+      "char_count": 4442,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214404885U.pdf",
+      "name": "CN214404885U.pdf",
+      "extension": ".pdf",
+      "size": 279752,
+      "char_count": 3219,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214320289U.pdf",
+      "name": "CN214320289U.pdf",
+      "extension": ".pdf",
+      "size": 391910,
+      "char_count": 6532,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214444039U.pdf",
+      "name": "CN214444039U.pdf",
+      "extension": ".pdf",
+      "size": 523109,
+      "char_count": 4609,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214628889U.pdf",
+      "name": "CN214628889U.pdf",
+      "extension": ".pdf",
+      "size": 334153,
+      "char_count": 4587,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214824847U.pdf",
+      "name": "CN214824847U.pdf",
+      "extension": ".pdf",
+      "size": 495340,
+      "char_count": 5579,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214913612U.pdf",
+      "name": "CN214913612U.pdf",
+      "extension": ".pdf",
+      "size": 329816,
+      "char_count": 4639,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214996075U.pdf",
+      "name": "CN214996075U.pdf",
+      "extension": ".pdf",
+      "size": 357150,
+      "char_count": 5564,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN214686573U.pdf",
+      "name": "CN214686573U.pdf",
+      "extension": ".pdf",
+      "size": 484948,
+      "char_count": 11323,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215141998U.pdf",
+      "name": "CN215141998U.pdf",
+      "extension": ".pdf",
+      "size": 441508,
+      "char_count": 5422,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215143240U.pdf",
+      "name": "CN215143240U.pdf",
+      "extension": ".pdf",
+      "size": 371710,
+      "char_count": 6290,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215199357U.pdf",
+      "name": "CN215199357U.pdf",
+      "extension": ".pdf",
+      "size": 440372,
+      "char_count": 4515,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215225682U.pdf",
+      "name": "CN215225682U.pdf",
+      "extension": ".pdf",
+      "size": 542055,
+      "char_count": 4768,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215281019U.pdf",
+      "name": "CN215281019U.pdf",
+      "extension": ".pdf",
+      "size": 386416,
+      "char_count": 3782,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215247818U.pdf",
+      "name": "CN215247818U.pdf",
+      "extension": ".pdf",
+      "size": 360199,
+      "char_count": 4452,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215487637U.pdf",
+      "name": "CN215487637U.pdf",
+      "extension": ".pdf",
+      "size": 441640,
+      "char_count": 3018,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215445341U.pdf",
+      "name": "CN215445341U.pdf",
+      "extension": ".pdf",
+      "size": 440723,
+      "char_count": 6180,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215489715U.pdf",
+      "name": "CN215489715U.pdf",
+      "extension": ".pdf",
+      "size": 355480,
+      "char_count": 5730,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215569021U.pdf",
+      "name": "CN215569021U.pdf",
+      "extension": ".pdf",
+      "size": 389633,
+      "char_count": 5968,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215711296U.pdf",
+      "name": "CN215711296U.pdf",
+      "extension": ".pdf",
+      "size": 332616,
+      "char_count": 4272,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215752548U.pdf",
+      "name": "CN215752548U.pdf",
+      "extension": ".pdf",
+      "size": 546711,
+      "char_count": 4902,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215777375U.pdf",
+      "name": "CN215777375U.pdf",
+      "extension": ".pdf",
+      "size": 403151,
+      "char_count": 4141,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215787378U.pdf",
+      "name": "CN215787378U.pdf",
+      "extension": ".pdf",
+      "size": 400837,
+      "char_count": 5001,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215838706U.pdf",
+      "name": "CN215838706U.pdf",
+      "extension": ".pdf",
+      "size": 409122,
+      "char_count": 7260,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215855203U.pdf",
+      "name": "CN215855203U.pdf",
+      "extension": ".pdf",
+      "size": 375558,
+      "char_count": 6597,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215886016U.pdf",
+      "name": "CN215886016U.pdf",
+      "extension": ".pdf",
+      "size": 385116,
+      "char_count": 5064,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215891116U.pdf",
+      "name": "CN215891116U.pdf",
+      "extension": ".pdf",
+      "size": 411944,
+      "char_count": 4161,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    },
+    {
+      "path": "/mnt/g/eight_dim/课堂笔记/专高六/RAG工单/RAGgd18/测试目录/CN215892353U.pdf",
+      "name": "CN215892353U.pdf",
+      "extension": ".pdf",
+      "size": 339954,
+      "char_count": 4750,
+      "tags": [
+        "Mixed_PDF"
+      ]
+    }
+  ]
+}

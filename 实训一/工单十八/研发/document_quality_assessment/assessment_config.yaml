@@ -1,0 +1,80 @@
+# Document Quality Assessment Configuration
+# All thresholds are configurable - adjust based on your dataset
+
+# PDF Type Detection
+pdf_detection:
+  # Characters per page to be considered text-based
+  char_threshold: 100
+  # Percentage of scanned pages to mark as scanned/mixed
+  scan_threshold: 0.7
+
+# Sensitive Information Detection
+sensitive_info:
+  # Enable/disable specific detection types
+  enabled_types:
+    - phone_mobile       # Chinese mobile: 1XX-XXXX-XXXX
+    - phone_landline    # Chinese landline
+    - email             # Email addresses
+    - id_card           # Chinese ID card numbers
+    # - bank_card        # Bank card numbers (disabled by default - high false positive rate)
+
+  # Number of context characters around sensitive info
+  context_chars: 50
+
+# Document Length Analysis
+length_analysis:
+  # Percentiles to calculate
+  percentiles: [0.25, 0.50, 0.75, 0.90, 0.99]
+  # Length buckets (in characters)
+  buckets:
+    - name: "Very Short"
+      max: 1000
+    - name: "Short"
+      max: 10000
+    - name: "Medium"
+      max: 100000
+    - name: "Long"
+      max: 1000000
+    - name: "Very Long"
+      max: null  # No upper limit
+
+# File Types
+supported_extensions:
+  - .pdf
+  - .docx
+  - .doc
+  - .md
+  - .txt
+  - .xlsx
+  - .xls
+  - .pptx
+  - .ppt
+
+# Duplicate Detection
+duplicate_detection:
+  # Use MD5 for exact matches
+  use_md5: true
+  # Use SimHash for similar documents (experimental)
+  use_simhash: false
+  # SimHash similarity threshold (0-1, higher = more similar)
+  simhash_threshold: 0.9
+
+# Performance
+performance:
+  # Number of parallel workers (0 = auto based on CPU cores)
+  workers: 0
+  # Timeout per file in seconds
+  file_timeout: 60
+  # Progress report interval
+  progress_interval: 100
+
+# Report
+report:
+  # Output formats
+  formats:
+    - json
+    - html
+  # Include detailed page analysis
+  include_page_details: false
+  # Maximum findings to include per category (0 = all)
+  max_findings_per_category: 100

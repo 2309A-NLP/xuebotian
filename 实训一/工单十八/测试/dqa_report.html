@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>文档质量评估报告</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background:#f0f2f5; color:#333; padding:30px; }
+.container { max-width:1100px; margin:0 auto; }
+.header { background:linear-gradient(135deg,#1a5276,#2e86c1); color:white; padding:30px 40px; border-radius:12px 12px 0 0; }
+.header h1 { font-size:24px; margin-bottom:6px; }
+.header p { opacity:0.85; font-size:13px; }
+.card { background:white; border-radius:0 0 12px 12px; padding:30px 40px; margin-bottom:24px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.card h2 { font-size:18px; color:#1a5276; border-bottom:2px solid #2e86c1; padding-bottom:8px; margin-bottom:16px; }
+.stats { display:flex; gap:20px; flex-wrap:wrap; }
+.stat-box { flex:1; min-width:140px; background:#f8f9fa; border-radius:8px; padding:16px; text-align:center; border-left:4px solid #2e86c1; }
+.stat-box .num { font-size:28px; font-weight:bold; color:#2e86c1; }
+.stat-box .label { font-size:12px; color:#777; margin-top:4px; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { background:#1a5276; color:white; padding:10px 12px; text-align:left; }
+td { padding:8px 12px; border-bottom:1px solid #eee; }
+tr:hover { background:#f5f8fc; }
+.tag { display:inline-block; background:#e3f2fd; color:#1565c0; padding:2px 8px; border-radius:4px; font-size:11px; margin:1px; }
+.warning-box { background:#fff3e0; border-left:4px solid #ff9800; padding:12px 16px; border-radius:4px; margin:12px 0; font-size:13px; }
+.success-box { background:#e8f5e9; border-left:4px solid #4caf50; padding:12px 16px; border-radius:4px; margin:12px 0; font-size:13px; }
+.section { margin-top:20px; }
+.percentile-bar { display:flex; gap:8px; flex-wrap:wrap; }
+.percentile-item { background:#f8f9fa; padding:8px 14px; border-radius:6px; text-align:center; }
+.percentile-item .val { font-weight:bold; color:#1a5276; font-size:16px; }
+.percentile-item .lbl { font-size:11px; color:#999; }
+.footer { text-align:center; color:#999; font-size:11px; margin-top:20px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>📄 文档质量评估报告</h1>
+        <p>目录: G:\eight_dim\课堂笔记\专高六\RAG工单\RAGgd18\测试目录 | 生成时间: 2026-06-15T13:35:48.837254</p>
+    </div>
+
+    <!-- Summary -->
+    <div class="card">
+        <h2>📊 总览</h2>
+        <div class="stats">
+            <div class="stat-box"><div class="num">34</div><div class="label">文档总数</div></div>
+            <div class="stat-box"><div class="num">13.79</div><div class="label">总大小 (MB)</div></div>
+            <div class="stat-box"><div class="num">5,219</div><div class="label">平均字符数</div></div>
+            <div class="stat-box"><div class="num">0</div><div class="label">重复文件组</div></div>
+            <div class="stat-box"><div class="num">36</div><div class="label">敏感信息(误报)</div></div>
+        </div>
+    </div>
+
+    <!-- Format -->
+    <div class="card">
+        <h2>📁 格式分布</h2>
+        <table>
+            <tr><th>格式</th><th>数量</th><th>占比</th><th>可视化</th></tr>
+            <tr>
+                <td><strong>.pdf</strong></td>
+                <td>34</td>
+                <td>100.0%</td>
+                <td><div style="background:#2e86c1;height:18px;width:300.0px;border-radius:3px"></div></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- PDF Analysis -->
+    <div class="card">
+        <h2>📄 PDF 类型分析</h2>
+        <div class="stats">
+            <div class="stat-box"><div class="num">0</div><div class="label">文本型</div></div>
+            <div class="stat-box" style="border-left-color:#ff9800"><div class="num" style="color:#ff9800">34</div><div class="label">混合型</div></div>
+            <div class="stat-box" style="border-left-color:#f44336"><div class="num" style="color:#f44336">0</div><div class="label">扫描型</div></div>
+            <div class="stat-box" style="border-left-color:#9e9e9e"><div class="num" style="color:#9e9e9e">0</div><div class="label">解析错误</div></div>
+        </div>
+
+        <div class="warning-box">
+            <strong>⚠️ 关键发现:</strong> 全部 34 个 PDF 均为混合型，含有扫描页面（图纸/附图），
+            文本提取不完整，部分页面需要 OCR 处理。
+        </div>
+
+        <h3 style="margin:16px 0 10px;font-size:15px">需人工确认的文件 (扫描页比例)</h3>
+        <table>
+            <tr><th>文件名</th><th>扫描页比例</th></tr>
+            <tr><td>CN214166529U.pdf</td><td style='color:#ff9800;font-weight:bold'>33.33%</td></tr>
+<tr><td>CN110977293A.pdf</td><td style='color:#ff9800;font-weight:bold'>28.57%</td></tr>
+<tr><td>CN111043613A.pdf</td><td style='color:#4caf50;font-weight:bold'>14.29%</td></tr>
+<tr><td>CN214197581U.pdf</td><td style='color:#4caf50;font-weight:bold'>20.0%</td></tr>
+<tr><td>CN111046557B.pdf</td><td style='color:#4caf50;font-weight:bold'>18.18%</td></tr>
+<tr><td>CN214291541U.pdf</td><td style='color:#ff9800;font-weight:bold'>37.5%</td></tr>
+<tr><td>CN214292768U.pdf</td><td style='color:#ff9800;font-weight:bold'>28.57%</td></tr>
+<tr><td>CN214404885U.pdf</td><td style='color:#4caf50;font-weight:bold'>20.0%</td></tr>
+<tr><td>CN214320289U.pdf</td><td style='color:#ff9800;font-weight:bold'>25.0%</td></tr>
+<tr><td>CN214444039U.pdf</td><td style='color:#ff9800;font-weight:bold'>37.5%</td></tr>
+<tr><td>CN214628889U.pdf</td><td style='color:#ff9800;font-weight:bold'>28.57%</td></tr>
+<tr><td>CN214824847U.pdf</td><td style='color:#4caf50;font-weight:bold'>16.67%</td></tr>
+<tr><td>CN214913612U.pdf</td><td style='color:#4caf50;font-weight:bold'>16.67%</td></tr>
+<tr><td>CN214996075U.pdf</td><td style='color:#4caf50;font-weight:bold'>16.67%</td></tr>
+<tr><td>CN214686573U.pdf</td><td style='color:#4caf50;font-weight:bold'>9.09%</td></tr>
+<tr><td>CN215141998U.pdf</td><td style='color:#ff9800;font-weight:bold'>28.57%</td></tr>
+<tr><td>CN215143240U.pdf</td><td style='color:#ff9800;font-weight:bold'>25.0%</td></tr>
+<tr><td>CN215199357U.pdf</td><td style='color:#ff9800;font-weight:bold'>28.57%</td></tr>
+<tr><td>CN215225682U.pdf</td><td style='color:#ff9800;font-weight:bold'>28.57%</td></tr>
+<tr><td>CN215281019U.pdf</td><td style='color:#4caf50;font-weight:bold'>20.0%</td></tr>
+<tr><td>CN215247818U.pdf</td><td style='color:#4caf50;font-weight:bold'>16.67%</td></tr>
+<tr><td>CN215487637U.pdf</td><td style='color:#4caf50;font-weight:bold'>20.0%</td></tr>
+<tr><td>CN215445341U.pdf</td><td style='color:#ff9800;font-weight:bold'>25.0%</td></tr>
+<tr><td>CN215489715U.pdf</td><td style='color:#ff9800;font-weight:bold'>28.57%</td></tr>
+<tr><td>CN215569021U.pdf</td><td style='color:#ff9800;font-weight:bold'>25.0%</td></tr>
+<tr><td>CN215711296U.pdf</td><td style='color:#ff9800;font-weight:bold'>37.5%</td></tr>
+<tr><td>CN215752548U.pdf</td><td style='color:#ff9800;font-weight:bold'>28.57%</td></tr>
+<tr><td>CN215777375U.pdf</td><td style='color:#f44336;font-weight:bold'>50.0%</td></tr>
+<tr><td>CN215787378U.pdf</td><td style='color:#ff9800;font-weight:bold'>28.57%</td></tr>
+<tr><td>CN215838706U.pdf</td><td style='color:#ff9800;font-weight:bold'>25.0%</td></tr>
+<tr><td>CN215855203U.pdf</td><td style='color:#4caf50;font-weight:bold'>14.29%</td></tr>
+<tr><td>CN215886016U.pdf</td><td style='color:#ff9800;font-weight:bold'>28.57%</td></tr>
+<tr><td>CN215891116U.pdf</td><td style='color:#f44336;font-weight:bold'>50.0%</td></tr>
+<tr><td>CN215892353U.pdf</td><td style='color:#4caf50;font-weight:bold'>16.67%</td></tr>
+
+        </table>
+    </div>
+
+    <!-- Length Distribution -->
+    <div class="card">
+        <h2>📏 文档长度分布</h2>
+        <div class="percentile-bar">
+            <div class="percentile-item"><div class="val">2,272</div><div class="lbl">最短</div></div>
+            <div class="percentile-item"><div class="val">4,442</div><div class="lbl">P25</div></div>
+            <div class="percentile-item"><div class="val">4,902</div><div class="lbl">P50(中位)</div></div>
+            <div class="percentile-item"><div class="val">5,968</div><div class="lbl">P75</div></div>
+            <div class="percentile-item"><div class="val">6,871</div><div class="lbl">P90</div></div>
+            <div class="percentile-item"><div class="val">11,323</div><div class="lbl">最长</div></div>
+        </div>
+
+        <h3 style="margin:16px 0 10px;font-size:15px">长度分桶</h3>
+        <div style='display:flex;align-items:center;margin:4px 0'><span style='width:80px;font-size:12px'>0-1K</span><div style='background:#2196F3;height:22px;width:0px;border-radius:3px;display:flex;align-items:center;padding-left:8px;color:white;font-size:12px'>0</div></div><div style='display:flex;align-items:center;margin:4px 0'><span style='width:80px;font-size:12px'>1K-10K</span><div style='background:#2196F3;height:22px;width:198px;border-radius:3px;display:flex;align-items:center;padding-left:8px;color:white;font-size:12px'>33</div></div><div style='display:flex;align-items:center;margin:4px 0'><span style='width:80px;font-size:12px'>10K-100K</span><div style='background:#2196F3;height:22px;width:6px;border-radius:3px;display:flex;align-items:center;padding-left:8px;color:white;font-size:12px'>1</div></div><div style='display:flex;align-items:center;margin:4px 0'><span style='width:80px;font-size:12px'>100K-1M</span><div style='background:#2196F3;height:22px;width:0px;border-radius:3px;display:flex;align-items:center;padding-left:8px;color:white;font-size:12px'>0</div></div><div style='display:flex;align-items:center;margin:4px 0'><span style='width:80px;font-size:12px'>1M+</span><div style='background:#2196F3;height:22px;width:0px;border-radius:3px;display:flex;align-items:center;padding-left:8px;color:white;font-size:12px'>0</div></div>
+    </div>
+
+    <!-- Duplicates -->
+    <div class="card">
+        <h2>🔄 重复文件检测</h2>
+        <div class="success-box">
+            ✅ 未发现重复文件。所有 34 个文件的 MD5 哈希值均唯一。
+        </div>
+    </div>
+
+    <!-- Sensitive -->
+    <div class="card">
+        <h2>🔒 敏感信息扫描</h2>
+        
+    <div class="warning-box">
+        <strong>⚠️ 注意:</strong> 检测到 36 处"电话号码"，但实际上全部为
+        <strong>专利申请号</strong>（如 202023294752），属于正则误报，非真实电话号码。
+        未检测到手机号、邮箱或身份证号。
+    </div>
+        <table>
+            <tr><th>类型</th><th>数量</th><th>说明</th></tr>
+            <tr><td>📞 phone_landline</td><td>36</td><td>专利申请号误报（非真实电话）</td></tr>
+            <tr><td>📱 phone_mobile</td><td>0</td><td>未检测到</td></tr>
+            <tr><td>✉️ email</td><td>0</td><td>未检测到</td></tr>
+            <tr><td>🪪 id_card</td><td>0</td><td>未检测到</td></tr>
+        </table>
+    </div>
+
+    <!-- Document List -->
+    <div class="card">
+        <h2>📋 文档详细列表</h2>
+        <table>
+            <tr><th>#</th><th>文件名</th><th>大小(KB)</th><th>字符数</th><th>长度可视化</th><th>标签</th></tr>
+            <tr><td>1</td><td>CN214686573U.pdf</td><td>473</td><td>11,323</td><td><div style="background:#4CAF50;height:12px;width:200.0px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>2</td><td>CN111046557B.pdf</td><td>1220</td><td>8,053</td><td><div style="background:#4CAF50;height:12px;width:142.24145544467015px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>3</td><td>CN215838706U.pdf</td><td>399</td><td>7,260</td><td><div style="background:#4CAF50;height:12px;width:128.23456681091582px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>4</td><td>CN111043613A.pdf</td><td>505</td><td>6,871</td><td><div style="background:#4CAF50;height:12px;width:121.36359622008301px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>5</td><td>CN215855203U.pdf</td><td>366</td><td>6,597</td><td><div style="background:#4CAF50;height:12px;width:116.52388942859666px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>6</td><td>CN214320289U.pdf</td><td>382</td><td>6,532</td><td><div style="background:#4CAF50;height:12px;width:115.3757838028791px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>7</td><td>CN215143240U.pdf</td><td>362</td><td>6,290</td><td><div style="background:#4CAF50;height:12px;width:111.10129824251524px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>8</td><td>CN215445341U.pdf</td><td>430</td><td>6,180</td><td><div style="background:#4CAF50;height:12px;width:109.15835026053166px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>9</td><td>CN215569021U.pdf</td><td>380</td><td>5,968</td><td><div style="background:#4CAF50;height:12px;width:105.41375960434513px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>10</td><td>CN215489715U.pdf</td><td>347</td><td>5,730</td><td><div style="background:#4CAF50;height:12px;width:101.2099266978716px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>11</td><td>CN214824847U.pdf</td><td>483</td><td>5,579</td><td><div style="background:#4CAF50;height:12px;width:98.54278901351232px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>12</td><td>CN214996075U.pdf</td><td>348</td><td>5,564</td><td><div style="background:#4CAF50;height:12px;width:98.27784156142366px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>13</td><td>CN215141998U.pdf</td><td>431</td><td>5,422</td><td><div style="background:#4CAF50;height:12px;width:95.76967234831758px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>14</td><td>CN215886016U.pdf</td><td>376</td><td>5,064</td><td><div style="background:#4CAF50;height:12px;width:89.44625982513467px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>15</td><td>CN215787378U.pdf</td><td>391</td><td>5,001</td><td><div style="background:#4CAF50;height:12px;width:88.33348052636228px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>16</td><td>CN110977293A.pdf</td><td>355</td><td>4,964</td><td><div style="background:#4CAF50;height:12px;width:87.67994347787689px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>17</td><td>CN214291541U.pdf</td><td>386</td><td>4,902</td><td><div style="background:#4CAF50;height:12px;width:86.58482734257706px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>18</td><td>CN215752548U.pdf</td><td>533</td><td>4,902</td><td><div style="background:#4CAF50;height:12px;width:86.58482734257706px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>19</td><td>CN215225682U.pdf</td><td>529</td><td>4,768</td><td><div style="background:#4CAF50;height:12px;width:84.21796343725161px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>20</td><td>CN215892353U.pdf</td><td>331</td><td>4,750</td><td><div style="background:#4CAF50;height:12px;width:83.9000264947452px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>21</td><td>CN214913612U.pdf</td><td>322</td><td>4,639</td><td><div style="background:#4CAF50;height:12px;width:81.93941534928906px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>22</td><td>CN214444039U.pdf</td><td>510</td><td>4,609</td><td><div style="background:#4CAF50;height:12px;width:81.40952044511171px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>23</td><td>CN214628889U.pdf</td><td>326</td><td>4,587</td><td><div style="background:#4CAF50;height:12px;width:81.020930848715px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>24</td><td>CN215199357U.pdf</td><td>430</td><td>4,515</td><td><div style="background:#4CAF50;height:12px;width:79.74918307868938px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>25</td><td>CN215247818U.pdf</td><td>351</td><td>4,452</td><td><div style="background:#4CAF50;height:12px;width:78.63640377991699px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>26</td><td>CN214292768U.pdf</td><td>309</td><td>4,442</td><td><div style="background:#4CAF50;height:12px;width:78.45977214519121px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>27</td><td>CN215711296U.pdf</td><td>324</td><td>4,272</td><td><div style="background:#4CAF50;height:12px;width:75.45703435485296px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>28</td><td>CN215891116U.pdf</td><td>402</td><td>4,161</td><td><div style="background:#4CAF50;height:12px;width:73.4964232093968px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>29</td><td>CN215777375U.pdf</td><td>393</td><td>4,141</td><td><div style="background:#4CAF50;height:12px;width:73.14315993994525px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>30</td><td>CN215281019U.pdf</td><td>377</td><td>3,782</td><td><div style="background:#4CAF50;height:12px;width:66.80208425328976px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>31</td><td>CN214166529U.pdf</td><td>341</td><td>3,610</td><td><div style="background:#4CAF50;height:12px;width:63.76402013600636px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>32</td><td>CN214404885U.pdf</td><td>273</td><td>3,219</td><td><div style="background:#4CAF50;height:12px;width:56.85772321822839px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>33</td><td>CN215487637U.pdf</td><td>431</td><td>3,018</td><td><div style="background:#4CAF50;height:12px;width:53.307427360240226px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+            <tr><td>34</td><td>CN214197581U.pdf</td><td>291</td><td>2,272</td><td><div style="background:#4CAF50;height:12px;width:40.130707409697074px;border-radius:3px"></div></td><td><span class='tag'>Mixed_PDF</span></td></tr>
+        </table>
+    </div>
+
+    <!-- Recommendations -->
+    <div class="card">
+        <h2>💡 建议</h2>
+        <ol style="line-height:2; padding-left:20px;">
+            <li>全部 34 个专利 PDF 均含扫描页（附图/结构图），建议对 <strong>扫描比例 ≥ 30%</strong> 的 8 个文件额外做 OCR 处理以提升文本覆盖率。</li>
+            <li>敏感信息检测中的 36 处"电话号码"均为专利申请号 <strong>误报</strong>，可安全忽略。</li>
+            <li>文档间无重复，长度分布集中在 2K-11K 字符，适合直接导入 RAG 知识库。</li>
+            <li>混合型 PDF 中的扫描页面（通常是附图页）在纯文本 RAG 中信息会丢失，如需完整信息建议结合多模态解析。</li>
+        </ol>
+    </div>
+
+    <div class="footer">
+        Document Quality Assessment Skill v1.0 | Generated by Hermes Agent
+    </div>
+</div>
+</body>
+</html>
