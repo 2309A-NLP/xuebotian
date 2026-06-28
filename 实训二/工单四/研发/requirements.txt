@@ -1,0 +1,11 @@
+# 人工智能 NLP-Agent 数字人项目-基金问答智能体任务
+# FinQwen: Fund Data Q&A Agent based on LangGraph
+
+langgraph>=0.2.0
+langchain>=0.2.0
+langchain-core>=0.2.0
+langchain-community>=0.2.0
+pydantic>=2.0.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+flask>=3.0.0

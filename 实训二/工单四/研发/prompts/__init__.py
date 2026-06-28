@@ -1,0 +1,17 @@
+# 人工智能 NLP-Agent 数字人项目-基金问答智能体任务
+# 提示词模块初始化
+from prompts.prompts import (
+    SQL_GENERATION_PROMPT,
+    SQL_CHECK_PROMPT,
+    ANSWER_GENERATION_PROMPT,
+    SCHEMA_PROMPT,
+    ERROR_HANDLING_PROMPT,
+)
+
+__all__ = [
+    "SQL_GENERATION_PROMPT",
+    "SQL_CHECK_PROMPT",
+    "ANSWER_GENERATION_PROMPT",
+    "SCHEMA_PROMPT",
+    "ERROR_HANDLING_PROMPT",
+]
